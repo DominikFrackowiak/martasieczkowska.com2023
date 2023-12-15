@@ -1,0 +1,35 @@
+.footer {
+	position: fixed;
+	display: flex;
+	justify-content: flex-end;
+	bottom: 10px;
+	left: 0;
+	right: 0;
+	height: 30px;
+	max-width: 1100px;
+	margin-inline: auto;
+	margin-top: 50px;
+
+	&_social {
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		width: 150px;
+		height: 100%;
+		padding: 10px 0;
+	}
+
+	&__link {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		display: block;
+		height: 30px;
+	}
+
+	&__socialIcon {
+		height: 25px;
+		font-size: 17px;
+		color: #000000d0;
+	}
+}

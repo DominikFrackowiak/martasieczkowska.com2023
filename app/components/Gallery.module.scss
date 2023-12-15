@@ -1,0 +1,15 @@
+.galleryWrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 20px;
+}
+
+.galleryImage{
+ // opacity: 0;
+ transition: opacity 0.5s;
+}
+
+.galeryImage.active{
+ opacity: 1;
+}
