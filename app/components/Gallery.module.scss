@@ -5,11 +5,33 @@
 	gap: 20px;
 }
 
-.galleryImage{
- // opacity: 0;
- transition: opacity 0.5s;
+.galleryImage {
+	// opacity: 0;
+	width: 320px;
+	height: auto;
+	transition: opacity 0.5s;
 }
 
-.galeryImage.active{
- opacity: 1;
+.galeryImage.active {
+	opacity: 1;
 }
+
+@media(min-width: 577px){
+ .galleryImage{
+		width: 576px;
+	}
+}
+
+@media(min-width: 992px){
+ .galleryImage{
+		width: 668px;
+	}
+}
+
+@media(min-width: 1200px){
+ .galleryImage{
+		width: 724px;
+	}
+}
+
+
