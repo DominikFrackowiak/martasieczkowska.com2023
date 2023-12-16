@@ -55,7 +55,7 @@ export default async function SinglePage({ params, searchParams }) {
 
 			<p>{p}</p>
 			<Gallery figures={figure} />
-			<Thumbnails />
+			<Thumbnails category={searchParams.category}/>
 		</div>
 	)
 }

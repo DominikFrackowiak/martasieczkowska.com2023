@@ -2,6 +2,7 @@ import styles from './Thumbnails.module.scss'
 
 // import getAllPosts from '../lib/getAllPosts'
 import getAllPosts from '../../lib/getAllPosts'
+import getAllPostsByCategory from '../../lib/getAllPostsByCategory'
 // import SingleThumbnail from '@/SingleThumbnail'
 import SingleThumbnail from '../components/SingleThumbnail'
 
@@ -16,14 +17,21 @@ import SingleThumbnail from '../components/SingleThumbnail'
 // console.log(illustrationThumbnails)
 
 export default async function Thumbnails({ category }) {
-	console.log(category)
-	const data = await getAllPosts()
+	let data
+	if (category === undefined) {
+		data = await getAllPosts()
+	} else if (category === 'graphic-design') {
+		data = await getAllPostsByCategory('5')
+	} else if (category === 'illustration') {
+		data = await getAllPostsByCategory('3')
+	}
+
 	// console.log(graphicDesign, illustration)
 	// const [thumbnailSelected, setThumbnailSelected] = useState(null)
 
 	let dataContentArray = []
 
-	for (let i = 0; i < data.length; i++) {
+	for (let i = 0; i < data?.length; i++) {
 		dataContentArray.push(data[i].content.rendered)
 	}
 
@@ -88,6 +96,7 @@ export default async function Thumbnails({ category }) {
 							key={index}
 							thumbnail={thumbnail}
 							description={thumbnailDescriptions[index]}
+							category={category}
 						/>
 					))}
 
