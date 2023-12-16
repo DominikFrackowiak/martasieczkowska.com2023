@@ -30,8 +30,11 @@ export default function Navigation({ searchParams }) {
 							} else {
 								router.push('/')
 							}
-
 							router.refresh()
+						}}
+						style={{
+							fontWeight:
+								searchParams.category !== 'graphic-design' ? 'normal' : 'bold',
 						}}
 					>
 						graphic design
@@ -43,8 +46,11 @@ export default function Navigation({ searchParams }) {
 							} else {
 								router.push('/')
 							}
-
 							router.refresh()
+						}}
+						style={{
+							fontWeight:
+								searchParams.category !== 'illustration' ? 'normal' : 'bold',
 						}}
 					>
 						illustration
@@ -56,8 +62,10 @@ export default function Navigation({ searchParams }) {
 							} else {
 								router.push('/')
 							}
-
 							router.refresh()
+						}}
+						style={{
+							fontWeight: searchParams.about !== 'true' ? 'normal' : 'bold',
 						}}
 					>
 						about
