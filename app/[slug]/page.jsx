@@ -9,7 +9,7 @@ import Thumbnails from '../components/Thumbnails'
 
 export async function generateMetadata({ params }) {
 	return {
-		title: `Marta Sieczkowska | ${params.slug}`,
+		title: `Marta Sieczkowska | ${params.slug.replaceAll('-', ' ')}`,
 		description: params.slug,
 	}
 }

@@ -2,6 +2,6 @@
 
 export default function NotFound() {
   return (
-    <div>not-found</div>
+    <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>Not found</div>
   )
 }

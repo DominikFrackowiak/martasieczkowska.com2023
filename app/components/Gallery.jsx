@@ -21,10 +21,6 @@ export default function Gallery({ figures }) {
 			})
 			.filter(Boolean)
 	}
- 
-
-
-
 
 	return (
 		<div className={styles.galleryWrapper}>
@@ -34,8 +30,8 @@ export default function Gallery({ figures }) {
 					src={img.src}
 					width={img.width}
 					height={img.height}
-					alt=''
-     className={styles.galleryImage}
+					className={styles.galleryImage}
+					sizes='(max-width: 575px) 320px, (max-width: 991px) 576px, (max-width: 1199px) 668px, 724px'
 				/>
 			))}
 		</div>
