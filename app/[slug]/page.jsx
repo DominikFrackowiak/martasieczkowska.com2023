@@ -14,7 +14,7 @@ export async function generateMetadata({ params }) {
 	}
 }
 
-export default async function SinglePage({ params }) {
+export default async function SinglePage({ params, searchParams }) {
 	const post = await getPost(params.slug)
 	let html
 	if (post.length) {
@@ -48,7 +48,7 @@ export default async function SinglePage({ params }) {
 
 	return (
 		<div className='responsiveWrapper'>
-			<Navigation />
+			<Navigation searchParams={searchParams}/>
 			<h1>
 				<div dangerouslySetInnerHTML={{ __html: title }}></div>
 			</h1>

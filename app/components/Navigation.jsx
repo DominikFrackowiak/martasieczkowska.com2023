@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 
 import styles from './Navigation.module.scss'
 
-export default function Navigation() {
+export default function Navigation({ searchParams }) {
 	const router = useRouter()
 	return (
 		<div className='responsiveWrapper'>
@@ -25,7 +25,12 @@ export default function Navigation() {
 					<Link href='/#about'>about</Link> */}
 					<p
 						onClick={() => {
-							router.push('/?category=graphic-design')
+							if (searchParams.category !== 'graphic-design') {
+								router.push('/?category=graphic-design')
+							} else {
+								router.push('/')
+							}
+
 							router.refresh()
 						}}
 					>
@@ -33,13 +38,30 @@ export default function Navigation() {
 					</p>
 					<p
 						onClick={() => {
-							router.push('/?category=illustration')
+							if (searchParams.category !== 'illustration') {
+								router.push('/?category=illustration')
+							} else {
+								router.push('/')
+							}
+
 							router.refresh()
 						}}
 					>
 						illustration
 					</p>
-					<p onClick={() => router.push('/#about')}>about</p>
+					<p
+						onClick={() => {
+							if (searchParams.about !== 'true') {
+								router.push('/?about=true')
+							} else {
+								router.push('/')
+							}
+
+							router.refresh()
+						}}
+					>
+						about
+					</p>
 				</div>
 			</div>
 		</div>
