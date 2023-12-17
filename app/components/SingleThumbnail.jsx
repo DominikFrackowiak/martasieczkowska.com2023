@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 
 export default function SingleThumbnail({ thumbnail, description, category }) {
 	const router = useRouter()
-	console.log(category)
+	// console.log(category)
 	return (
 		<>
 			<div
