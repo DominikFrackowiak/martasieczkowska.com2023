@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Source_Serif_4 } from 'next/font/google'
 import './globals.scss'
 
 import Footer from './components/Footer'
 
-// const inter = Inter({ subsets: ['latin'] })
+const inter = Source_Serif_4({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
 	title: 'Create Next App',

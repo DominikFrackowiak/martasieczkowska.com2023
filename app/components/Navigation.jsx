@@ -4,6 +4,14 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
+import { Roboto } from 'next/font/google'
+
+const roboto = Roboto({
+	weight: ['400', '700'],
+	subsets: ['latin'],
+	display: 'swap',
+})
+
 import styles from './Navigation.module.scss'
 
 export default function Navigation({ searchParams }) {
@@ -24,6 +32,7 @@ export default function Navigation({ searchParams }) {
 					<Link href={'/?category=illustration'}>illustration</Link>
 					<Link href='/#about'>about</Link> */}
 					<p
+						className={roboto.className}
 						onClick={() => {
 							if (searchParams.category !== 'graphic-design') {
 								router.push('/?category=graphic-design')
@@ -40,6 +49,7 @@ export default function Navigation({ searchParams }) {
 						graphic design
 					</p>
 					<p
+						className={roboto.className}
 						onClick={() => {
 							if (searchParams.category !== 'illustration') {
 								router.push('/?category=illustration')
@@ -56,6 +66,7 @@ export default function Navigation({ searchParams }) {
 						illustration
 					</p>
 					<p
+						className={roboto.className}
 						onClick={() => {
 							if (searchParams.about !== 'true') {
 								router.push('/?about=true')

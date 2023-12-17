@@ -12,6 +12,7 @@ import ArrowUp from '../components/ArrowUp'
 
 import Link from 'next/link'
 
+
 export async function generateMetadata({ params }) {
 	return {
 		title: `Marta Sieczkowska | ${params.slug.replaceAll('-', ' ')}`,
