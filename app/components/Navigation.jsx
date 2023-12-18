@@ -18,7 +18,14 @@ export default function Navigation({ searchParams }) {
 	const router = useRouter()
 	return (
 		<div className='responsiveWrapper'>
-			<div style={{}}>
+			<div
+				style={{
+					display: 'flex',
+					justifyContent: 'space-between',
+					alignItems: 'center',
+					width: '100%',
+				}}
+			>
 				<Link href='/'>
 					<Image
 						src={'/assets/logo_marta_big.svg'}

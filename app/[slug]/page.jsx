@@ -12,6 +12,13 @@ import ArrowUp from '../components/ArrowUp'
 
 import Link from 'next/link'
 
+const scrollToTop = () => {
+	window.scrollTo({
+		top: 0,
+		behavior: 'smooth',
+	})
+}
+
 export async function generateMetadata({ params }) {
 	return {
 		title: `Marta Sieczkowska | ${params.slug.replaceAll('-', ' ')}`,
@@ -124,7 +131,7 @@ export default async function SinglePage({ params, searchParams }) {
 								: `/${allSlugs[0]}?category=${searchParams.category}`
 						}
 					>
-						<p>+</p>
+						<p onClick={scrollToTop}>+</p>
 					</Link>
 				)}
 				{searchParams.category === undefined && (
