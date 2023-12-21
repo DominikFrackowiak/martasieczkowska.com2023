@@ -4,7 +4,7 @@ export default async function About() {
  const data = await getAboutPage()
  const aboutContent = data[0].content.rendered.split('\n').filter(el => el !== '')
  const experienceContent = data[0].content.rendered.match(/<pre[\s\S]*?<\/pre>/)[0]
- console.log(aboutContent)
+
  
 	return (
 		<div

@@ -11,7 +11,7 @@ const scrollToTop = () => {
 	})
 }
 
-export default function SingleThumbnail({ thumbnail, description, category }) {
+export default function SingleThumbnail({ thumbnail, description, category, slug }) {
 	const router = useRouter()
 	// console.log(category)
 	return (
@@ -21,10 +21,10 @@ export default function SingleThumbnail({ thumbnail, description, category }) {
 				onClick={() => {
 					// setThumbnailSelected(thumbnail.alt)
 					if (category === undefined) {
-						router.push(`/${thumbnail.alt}`)
+						router.push(`/${slug}`)
 						scrollToTop()
 					} else {
-						router.push(`/${thumbnail.alt}?category=${category}`)
+						router.push(`/${slug}?category=${category}`)
 						scrollToTop()
 					}
 				}}
@@ -36,8 +36,8 @@ export default function SingleThumbnail({ thumbnail, description, category }) {
 				></div>
 				<Image
 					className={styles.singleThumbnail__image}
-					src={thumbnail.src}
-					alt={thumbnail.alt}
+					src={thumbnail}
+					alt={slug}
 					width={694}
 					height={578}
 				/>

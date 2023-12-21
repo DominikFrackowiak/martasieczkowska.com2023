@@ -4,7 +4,7 @@ import './globals.scss'
 
 import Footer from './components/Footer'
 
-const inter = Source_Serif_4({ subsets: ['latin'] })
+const SourceSerif = Source_Serif_4({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
 	title: 'Create Next App',
@@ -19,7 +19,7 @@ export default function RootLayout({
 	return (
 		<html lang='en'>
 			{/* <body className={inter.className}> */}
-			<body>
+			<body className={SourceSerif.className}>
 				{children}
 
 				<Footer />
