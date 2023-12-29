@@ -6,23 +6,22 @@ import getAllPostsByCategory from '../../lib/getAllPostsByCategory'
 import SingleThumbnail from '../components/SingleThumbnail'
 
 export default async function Thumbnails({ category }) {
-	let data = await getAllPosts()
-	// if (category === undefined) {
-	// 	return data
-	// } else if (category === 'graphic-design') {
-	// 	data = data
-	// } else if (category === 'illustration') {
-	// 	data = data
-	// }
+	// console.log(category)
 
-	
+	let data
 
+	if (category === undefined) {
+		data = await getAllPosts()
+	} else {
+		data = await getAllPosts()
 
+		data = data.filter(el => el.acf.category.slug === category)
+	}
 
 	return (
 		<div className='responsiveWrapper'>
 			<div className={styles.thumbnails}>
-				{data &&
+				{data.length &&
 					data.reverse().map((thumbnail, index) => {
 						// console.log(category)
 						return (

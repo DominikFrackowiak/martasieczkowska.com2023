@@ -100,7 +100,7 @@ export async function generateStaticParams() {
 	const postsData = getAllPosts()
 	const posts = await postsData
 
-	posts.forEach(post => console.log('slug ' + post.acf.slug))
+	// posts.forEach(post => console.log('slug ' + post.acf.slug))
 
 	return posts.map(post => ({ slug: post.acf.slug }))
 }
