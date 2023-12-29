@@ -18,6 +18,8 @@ export default async function Thumbnails({ category }) {
 		data = data.filter(el => el.acf.category.slug === category)
 	}
 
+	console.log(data)
+
 	return (
 		<div className='responsiveWrapper'>
 			<div className={styles.thumbnails}>

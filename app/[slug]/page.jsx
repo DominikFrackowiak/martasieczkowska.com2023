@@ -29,6 +29,20 @@ export async function generateMetadata({ params }) {
 export default async function SinglePage({ params, searchParams }) {
 	const post = await getPost(params.slug)
 
+	let data
+
+	if (searchParams.category === undefined) {
+		data = await getAllPosts()
+	} else {
+		data = await getAllPosts()
+
+		data = data.filter(el => el.acf.category.slug === searchParams.category)
+	}
+
+
+ 
+
+
 	const acFields = post[0].acf
 
 	function extractLargeImageURLs(obj) {
@@ -44,8 +58,8 @@ export default async function SinglePage({ params, searchParams }) {
 
 	const largeImages = extractLargeImageURLs(acFields)
 
-	// const allSlugs = thumbnails.map(thumbnail => thumbnail.alt)
-	// const currentSlugIndex = allSlugs.indexOf(params.slug)
+	const allSlugs = data.map(el => el.acf.slug)
+	const currentSlugIndex = allSlugs.indexOf(params.slug)
 
 	return (
 		<div className='responsiveWrapper'>
@@ -56,7 +70,7 @@ export default async function SinglePage({ params, searchParams }) {
 
 			<p>{post[0].acf.text}</p>
 			<Gallery images={largeImages} />
-			{/* <div
+			<div
 				style={{
 					display: 'flex',
 					gap: '20px',
@@ -72,7 +86,7 @@ export default async function SinglePage({ params, searchParams }) {
 								: `/${allSlugs[0]}?category=${searchParams.category}`
 						}
 					>
-						<p onClick={scrollToTop}>+</p>
+						<p>+</p>
 					</Link>
 				)}
 				{searchParams.category === undefined && (
@@ -90,7 +104,7 @@ export default async function SinglePage({ params, searchParams }) {
 					<p>-</p>
 				</Link>
 				<ArrowUp /> 
-			</div>*/}
+			</div>
 			<Thumbnails category={searchParams.category} />
 		</div>
 	)
