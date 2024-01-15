@@ -1,15 +1,57 @@
 .thumbnails {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 30px;
-	max-width: 1100px;
-	margin: 30px auto;
+	grid-template-columns: repeat(2, auto);
+	max-width: 320px;
+	gap: 15px;
+
+	@media (min-width: 576px) {
+		width: 576px;
+	}
+
+	@media (min-width: 768px) {
+		grid-template-columns: repeat(3, auto);
+		gap: 20px;
+		padding-bottom: 60px;
+		width: 768px;
+	}
+
+	@media (min-width: 992px) {
+		width: 992px;
+	}
+
+	@media (min-width: 1200px) {
+		padding: 20px 0;
+		gap: 22px;
+		width: 1100px;
+	}
 }
 
 .singleThumbnail {
 	position: relative;
-	height: 283.17px;
-	width: 340px;
+
+	height: 129px;
+	width: 156px;
+
+	@media (min-width: 576px) {
+		
+		height: 208px;
+		width: 252px;
+	}
+
+	@media (min-width: 768px) {
+		height: 175px;
+		 width: 212px;
+	}
+
+	@media (min-width: 992px) {
+		height: 233px;
+		width: 282px;
+	}
+
+	@media (min-width: 1200px) {
+		height: 290px;
+		width: 351px;
+	}
 
 	&__image {
 		position: absolute;

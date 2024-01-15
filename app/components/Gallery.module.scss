@@ -1,10 +1,11 @@
 .galleryWrapper {
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 	align-items: flex-start;
 	gap: 20px;
 	// transform: translateX(-105vw)
-	transition: .5s;
+	transition: 0.5s;
 }
 
 .galleryImage {
@@ -18,22 +19,20 @@
 	opacity: 1;
 }
 
-@media(min-width: 577px){
- .galleryImage{
+@media (min-width: 577px) {
+	.galleryImage {
 		width: 576px;
 	}
 }
 
-@media(min-width: 992px){
- .galleryImage{
+@media (min-width: 992px) {
+	.galleryImage {
 		width: 668px;
 	}
 }
 
-@media(min-width: 1200px){
- .galleryImage{
+@media (min-width: 1200px) {
+	.galleryImage {
 		width: 724px;
 	}
 }
-
-
