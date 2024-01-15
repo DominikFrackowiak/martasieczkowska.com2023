@@ -6,7 +6,7 @@ import getAllPostsByCategory from '../../lib/getAllPostsByCategory'
 import SingleThumbnail from '../components/SingleThumbnail'
 
 export default async function Thumbnails({ category }) {
-	// console.log(category)
+
 
 	let data
 
@@ -18,14 +18,14 @@ export default async function Thumbnails({ category }) {
 		data = data.filter(el => el.acf.category.slug === category)
 	}
 
-	console.log(data)
+
 
 	return (
 		<div className='responsiveWrapper'>
 			<div className={styles.thumbnails}>
 				{data.length &&
 					data.reverse().map((thumbnail, index) => {
-						// console.log(category)
+						
 						return (
 							<SingleThumbnail
 								key={index}

@@ -9,6 +9,7 @@ import { notFound } from 'next/navigation'
 import Navigation from '../components/Navigation'
 import Thumbnails from '../components/Thumbnails'
 import ArrowUp from '../components/ArrowUp'
+import PageSwipeCloseMenu from '../components/PageSwipeCloseMenu'
 
 import Link from 'next/link'
 
@@ -105,6 +106,7 @@ export default async function SinglePage({ params, searchParams }) {
 				</Link>
 				<ArrowUp /> 
 			</div>
+			<PageSwipeCloseMenu/>
 			<Thumbnails category={searchParams.category} />
 		</div>
 	)

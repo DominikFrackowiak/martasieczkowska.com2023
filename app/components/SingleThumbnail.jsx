@@ -13,7 +13,7 @@ const scrollToTop = () => {
 
 export default function SingleThumbnail({ thumbnail, description, category, slug }) {
 	const router = useRouter()
-	// console.log(category)
+	
 	return (
 		<>
 			<div

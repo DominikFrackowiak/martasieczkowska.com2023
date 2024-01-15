@@ -5,10 +5,10 @@ import About from './components/About'
 
 import Image from 'next/image'
 
-import styles from './page.module.css'
+import styles from './page.module.scss'
 
 export default function Home({ searchParams }) {
- console.log(searchParams)
+ 
 	return (
 		<>
 			<Navigation searchParams={searchParams} />
