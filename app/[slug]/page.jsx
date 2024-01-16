@@ -40,10 +40,6 @@ export default async function SinglePage({ params, searchParams }) {
 		data = data.filter(el => el.acf.category.slug === searchParams.category)
 	}
 
-
- 
-
-
 	const acFields = post[0].acf
 
 	function extractLargeImageURLs(obj) {
@@ -65,12 +61,12 @@ export default async function SinglePage({ params, searchParams }) {
 	return (
 		<div className='responsiveWrapper'>
 			<Navigation searchParams={searchParams} />
-			<h1>
-				<div dangerouslySetInnerHTML={{ __html: post[0].title.rendered }}></div>
-			</h1>
 
-			<p>{post[0].acf.text}</p>
-			<Gallery images={largeImages} />
+			<Gallery
+				images={largeImages}
+				headingInnerText={post[0].title.rendered}
+				postInnerText={post[0].acf.text}
+			/>
 			<div
 				style={{
 					display: 'flex',
@@ -104,9 +100,9 @@ export default async function SinglePage({ params, searchParams }) {
 				<Link href={`/`}>
 					<p>-</p>
 				</Link>
-				<ArrowUp /> 
+				<ArrowUp />
 			</div>
-			<PageSwipeCloseMenu/>
+			<PageSwipeCloseMenu />
 			<Thumbnails category={searchParams.category} />
 		</div>
 	)
