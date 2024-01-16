@@ -23,10 +23,6 @@ export default function Gallery({ images }) {
 		})
 	}, [images])
 
-	function imageLoader(){
-		return <Image src='/assets/logo_marta_big.svg' width={400} height={300}/>
-	}
-
 	return (
 		<motion.div
 			initial={{ opacity: 0, x: '-100vw' }}
@@ -47,7 +43,7 @@ export default function Gallery({ images }) {
 						width={img.width}
 						height={img.height}
 						className={styles.galleryImage}
-						loadier={imageLoader}
+						quality={80}
 						sizes='(max-width: 575px) 320px, (max-width: 991px) 576px, (max-width: 1199px) 668px, 724px'
 					/>
 					{img.caption && <small>{img.caption}</small>}
