@@ -43,6 +43,7 @@ export default function Gallery({ images }) {
 						width={img.width}
 						height={img.height}
 						className={styles.galleryImage}
+						quality={80}
 						sizes='(max-width: 575px) 320px, (max-width: 991px) 576px, (max-width: 1199px) 668px, 724px'
 					/>
 					{img.caption && <small>{img.caption}</small>}
