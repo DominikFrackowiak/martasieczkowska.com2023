@@ -1,8 +1,5 @@
-'use client'
-
 import Link from 'next/link'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
 
 import { Roboto } from 'next/font/google'
 
@@ -15,7 +12,6 @@ const roboto = Roboto({
 import styles from './Navigation.module.scss'
 
 export default function Navigation({ searchParams }) {
-	const router = useRouter()
 	return (
 		<div className='responsiveWrapper'>
 			<div
@@ -35,59 +31,43 @@ export default function Navigation({ searchParams }) {
 					/>
 				</Link>
 				<div className={styles.navigationMenu}>
-					{/* <Link href={'/?category=graphic-design'}>graphic design</Link>
-					<Link href={'/?category=illustration'}>illustration</Link>
-					<Link href='/#about'>about</Link> */}
-					<p
+					<Link
 						className={roboto.className}
-						onClick={() => {
-							if (searchParams.category !== 'graphic-design') {
-								router.push('/?category=graphic-design')
-							} else {
-								router.push('/')
-							}
-							router.refresh()
-						}}
+						href={
+							searchParams.category !== 'graphic-design'
+								? '/?category=graphic-design'
+								: '/'
+						}
 						style={{
 							fontWeight:
 								searchParams.category !== 'graphic-design' ? 'normal' : 'bold',
 						}}
 					>
 						graphic design
-					</p>
-					<p
+					</Link>
+					<Link
 						className={roboto.className}
-						onClick={() => {
-							if (searchParams.category !== 'illustration') {
-								router.push('/?category=illustration')
-							} else {
-								router.push('/')
-							}
-							router.refresh()
-						}}
+						href={
+							searchParams.category !== 'illustration'
+								? '/?category=illustration'
+								: '/'
+						}
 						style={{
 							fontWeight:
 								searchParams.category !== 'illustration' ? 'normal' : 'bold',
 						}}
 					>
 						illustration
-					</p>
-					<p
+					</Link>
+					<Link
 						className={roboto.className}
-						onClick={() => {
-							if (searchParams.about !== 'true') {
-								router.push('/?about=true')
-							} else {
-								router.push('/')
-							}
-							router.refresh()
-						}}
+						href={searchParams.about !== 'true' ? '/?about=true' : '/'}
 						style={{
 							fontWeight: searchParams.about !== 'true' ? 'normal' : 'bold',
 						}}
 					>
 						about
-					</p>
+					</Link>
 				</div>
 			</div>
 		</div>
