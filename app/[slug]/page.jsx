@@ -6,7 +6,7 @@ import getAllPostsByCategory from '../../lib/getAllPostsByCategory'
 
 import Gallery from '../components/Gallery'
 import { notFound } from 'next/navigation'
-import Navigation from '../components/Navigation'
+import Navigation from '../components/NavigationDesktop'
 import Thumbnails from '../components/Thumbnails'
 import ArrowUp from '../components/ArrowUp'
 import PageSwipeCloseMenu from '../components/PageSwipeCloseMenu'
