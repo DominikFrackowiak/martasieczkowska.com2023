@@ -1,0 +1,17 @@
+.headerMobile {
+	display: block;
+
+	@media (min-width: 768px) {
+		display: none;
+	}
+}
+
+.navigationMenu {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+	width: 250px;
+ margin-bottom: 15px;
+	color: #161515;
+}

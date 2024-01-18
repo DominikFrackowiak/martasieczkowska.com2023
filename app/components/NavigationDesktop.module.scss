@@ -1,12 +1,16 @@
+.headerDesktop {
+	display: none;
+
+	@media(min-width: 768px) {
+		display: block;
+	}
+}
+
 .navigationMenu {
 	display: flex;
 	justify-content: space-between;
 	width: 250px;
-	// font-family: 'roboto';
  color: #161515;
-
-	p{
-		// font-family: 'roboto';
-		cursor: pointer;
-	}
 }
+
+
