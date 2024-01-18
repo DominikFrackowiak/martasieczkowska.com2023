@@ -2,10 +2,11 @@
 	display: grid;
 	grid-template-columns: repeat(2, auto);
 	max-width: 320px;
-	gap: 15px;
+	gap: 10px;
 
 	@media (min-width: 576px) {
 		width: 576px;
+		gap: 15px;
 	}
 
 	@media (min-width: 768px) {
@@ -19,7 +20,7 @@
 		width: 992px;
 	}
 
-	@media (min-width: 1200px) {
+	@media (min-width: 1100px) {
 		padding: 20px 0;
 		gap: 22px;
 		width: 1100px;
@@ -34,21 +35,21 @@
 
 	@media (min-width: 576px) {
 		
-		height: 208px;
-		width: 252px;
+		height: 210px;
+		width: 281px;
 	}
 
 	@media (min-width: 768px) {
 		height: 175px;
-		 width: 212px;
+		width: 242px;
 	}
 
 	@media (min-width: 992px) {
-		height: 233px;
-		width: 282px;
+		width: 319px;
+		height: 234px;
 	}
 
-	@media (min-width: 1200px) {
+	@media (min-width: 1100px) {
 		height: 290px;
 		width: 351px;
 	}
