@@ -5,23 +5,25 @@ import styles from './Gallery.module.scss'
 import { motion } from 'framer-motion'
 
 export default function Gallery({ images, headingInnerText, postInnerText }) {
-	const imageRefs = useRef([])
+	// const imageRefs = useRef([])
 
-	useEffect(() => {
-		imageRefs.current = imageRefs.current.slice(0, images.length)
-	}, [images])
+	// useEffect(() => {
+	// 	imageRefs.current = imageRefs.current.slice(0, images.length)
+	// }, [images])
 
-	useEffect(() => {
-		imageRefs.current.forEach(ref => {
-			if (ref) {
-				if (ref.clientHeight < 50) {
-					ref.classList.add('displayNone')
-				} else {
-					ref.classList.remove('displayNone')
-				}
-			}
-		})
-	}, [images])
+	// useEffect(() => {
+	// 	imageRefs.current.forEach(ref => {
+	// 		if (ref) {
+	// 			if (ref.clientHeight < 50) {
+	// 				ref.classList.add('displayNone')
+	// 			} else {
+	// 				ref.classList.remove('displayNone')
+	// 			}
+	// 		}
+	// 	})
+	// }, [images])
+
+	// console.log(images)
 
 	return (
 		<motion.div
@@ -35,7 +37,7 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 			</h1>
 
 			<p>{postInnerText}</p>
-			{images.map((img, index) => (
+			{/* {images.map((img, index) => (
 				<div key={index} ref={el => (imageRefs.current[index] = el)}>
 					<Image
 						key={index}
@@ -49,7 +51,7 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 					/>
 					{img.caption && <small>{img.caption}</small>}
 				</div>
-			))}
+			))} */}
 		</motion.div>
 	)
 }

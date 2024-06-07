@@ -1,4 +1,6 @@
-import { parse } from '@wordpress/block-serialization-default-parser'
+// import { parse } from '@wordpress/block-serialization-default-parser'
+import { v4 as uuid } from 'uuid'
+import parse from 'html-react-parser'
 
 import getPost from '../../lib/getPost'
 import getAllPosts from '../../lib/getAllPosts'
@@ -10,6 +12,8 @@ import Navigation from '../components/Navigation'
 import Thumbnails from '../components/Thumbnails'
 import ArrowUp from '../components/ArrowUp'
 import PageSwipeCloseMenu from '../components/PageSwipeCloseMenu'
+import handleDataToDisplayInGallery from '../../utils/handleDataToDisplayInGallery'
+
 
 import Link from 'next/link'
 
@@ -28,11 +32,12 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function SinglePage({ params, searchParams }) {
-	const post = await getPost(params.slug)
+	
+	const {heading, description, images} = await handleDataToDisplayInGallery(params)
+ 
 
-	console.log(post.data.nodeByUri.blocks, post.data.nodeByUri.title)
-
-	let data
+	// console.log(heading)
+	
 
 	// if (searchParams.category === undefined) {
 	// 	data = await getAllPosts()
@@ -60,17 +65,18 @@ export default async function SinglePage({ params, searchParams }) {
 	// const allSlugs = data.map(el => el.acf.slug)
 	// const currentSlugIndex = allSlugs.indexOf(params.slug)
 
+	 
+
 	return (
 		<div className='responsiveWrapper'>
-			hellow orld
 			<Navigation searchParams={searchParams} />
 
 			<Gallery
-				images={largeImages}
-				headingInnerText={post[0].title.rendered}
-				postInnerText={post[0].acf.text}
+				images={images}
+				headingInnerText={heading}
+				postInnerText={description}
 			/>
-			<div
+			{/*<div
 				style={{
 					display: 'flex',
 					gap: '20px',
@@ -105,8 +111,8 @@ export default async function SinglePage({ params, searchParams }) {
 				</Link>
 				<ArrowUp />
 			</div>
-			<PageSwipeCloseMenu />
-			<Thumbnails category={searchParams.category} /> */}
+			<PageSwipeCloseMenu /> */}
+			{/* <Thumbnails category={searchParams.category} />  */}
 		</div>
 	)
 }

@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styles from './PageSwipeCloseMenu.module.scss'
 
-console.log(styles)
+
 
 
 
