@@ -30,36 +30,39 @@ export async function generateMetadata({ params }) {
 export default async function SinglePage({ params, searchParams }) {
 	const post = await getPost(params.slug)
 
+	console.log(post.data.nodeByUri.blocks, post.data.nodeByUri.title)
+
 	let data
 
-	if (searchParams.category === undefined) {
-		data = await getAllPosts()
-	} else {
-		data = await getAllPosts()
+	// if (searchParams.category === undefined) {
+	// 	data = await getAllPosts()
+	// } else {
+	// 	data = await getAllPosts()
 
-		data = data.filter(el => el.acf.category.slug === searchParams.category)
-	}
+	// 	data = data.filter(el => el.acf.category.slug === searchParams.category)
+	// }
 
-	const acFields = post[0].acf
+	// const acFields = post[0].acf
 
-	function extractLargeImageURLs(obj) {
-		let images = []
-		for (let key in obj) {
-			if (obj.hasOwnProperty(key) && key.includes('large_image')) {
-				images.push(obj[key])
-			}
-		}
+	// function extractLargeImageURLs(obj) {
+	// 	let images = []
+	// 	for (let key in obj) {
+	// 		if (obj.hasOwnProperty(key) && key.includes('large_image')) {
+	// 			images.push(obj[key])
+	// 		}
+	// 	}
 
-		return images
-	}
+	// 	return images
+	// }
 
-	const largeImages = extractLargeImageURLs(acFields)
+	// const largeImages = extractLargeImageURLs(acFields)
 
-	const allSlugs = data.map(el => el.acf.slug)
-	const currentSlugIndex = allSlugs.indexOf(params.slug)
+	// const allSlugs = data.map(el => el.acf.slug)
+	// const currentSlugIndex = allSlugs.indexOf(params.slug)
 
 	return (
 		<div className='responsiveWrapper'>
+			hellow orld
 			<Navigation searchParams={searchParams} />
 
 			<Gallery
@@ -103,16 +106,16 @@ export default async function SinglePage({ params, searchParams }) {
 				<ArrowUp />
 			</div>
 			<PageSwipeCloseMenu />
-			<Thumbnails category={searchParams.category} />
+			<Thumbnails category={searchParams.category} /> */}
 		</div>
 	)
 }
 
-export async function generateStaticParams() {
-	const postsData = getAllPosts()
-	const posts = await postsData
+// export async function generateStaticParams() {
+// 	const postsData = getAllPosts()
+// 	const posts = await postsData
 
-	// posts.forEach(post => console.log('slug ' + post.acf.slug))
 
-	return posts.map(post => ({ slug: post.acf.slug }))
-}
+
+// 	return posts.map(post => ({ slug: post.acf.slug }))
+// }

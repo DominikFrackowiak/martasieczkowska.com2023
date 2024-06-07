@@ -11,7 +11,7 @@
   "dependencies": {
     "@wordpress/block-serialization-default-parser": "^4.47.0",
     "framer-motion": "^10.16.16",
-    "next": "14.0.4",
+    "next": "^14.2.3",
     "react": "^18",
     "react-dom": "^18",
     "sass": "^1.69.5"
