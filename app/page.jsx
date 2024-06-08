@@ -16,7 +16,7 @@ export default function Home({ searchParams }) {
 				{searchParams.about==='true' && <About/>}
 			</div>
 			<main className={styles.main}></main>
-			{/* <Thumbnails category={searchParams.category} /> */}
+			<Thumbnails category={searchParams.category} />
 		</>
 	)
 }

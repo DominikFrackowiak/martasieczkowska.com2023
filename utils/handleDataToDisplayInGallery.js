@@ -6,7 +6,6 @@ function extractAlt(htmlContent) {
 	return match ? match[1] : null
 }
 
-
 export default async function handleDataToDisplayInGallery(params) {
 	const post = await getPost(params.slug)
 	// console.log(post.data.nodeByUri.blocks)
@@ -20,8 +19,6 @@ export default async function handleDataToDisplayInGallery(params) {
 		attributes: block.attributes,
 		htmlContent: extractAlt(block.htmlContent),
 	}))
-
-	console.log(images)
 
 	return { heading, description, images }
 }

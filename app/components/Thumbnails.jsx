@@ -1,38 +1,34 @@
 import styles from './Thumbnails.module.scss'
 
 import getAllPosts from '../../lib/getAllPosts'
-import getAllPostsByCategory from '../../lib/getAllPostsByCategory'
+import getThumbnailsByCategory from '../../lib/getThumbnailsByCategory'
 
 import SingleThumbnail from '../components/SingleThumbnail'
 
 export default async function Thumbnails({ category }) {
-
-
-	let data
+	let receivedData
+	let data =[]
 
 	if (category === undefined) {
-		data = await getAllPosts()
+		receivedData = await getThumbnailsByCategory(category)
 	} else {
-		data = await getAllPosts()
-
-		data = data.filter(el => el.acf.category.slug === category)
+		receivedData = await getThumbnailsByCategory(category)
 	}
 
-
+	data.push(receivedData)
 
 	return (
 		<div className='responsiveWrapper'>
 			<div className={styles.thumbnails}>
 				{data.length &&
-					data.reverse().map((thumbnail, index) => {
-						
+					data.reverse().map(thumbnail => {
 						return (
 							<SingleThumbnail
-								key={index}
-								thumbnail={thumbnail.acf.thumbnail.url}
-								description={thumbnail.acf.thumbnail_description}
+								key={thumbnail.thumbnail.id}
+								thumbnail={thumbnail.thumbnail.link}
+								description={thumbnail.thumbnailDescription}
 								category={category}
-								slug={thumbnail.acf.slug}
+								slug={thumbnail.slug}
 							/>
 						)
 					})}
