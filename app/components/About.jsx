@@ -1,9 +1,9 @@
 import getAboutPage from '../../lib/getAboutPage'
 
 export default async function About() {
- const data = await getAboutPage()
- const aboutContent = data[0].content.rendered.split('\n').filter(el => el !== '')
- const experienceContent = data[0].content.rendered.match(/<pre[\s\S]*?<\/pre>/)[0]
+ // const data = await getAboutPage()
+ // const aboutContent = data[0].content.rendered.split('\n').filter(el => el !== '')
+ // const experienceContent = data[0].content.rendered.match(/<pre[\s\S]*?<\/pre>/)[0]
 
  
 	return (
@@ -16,7 +16,7 @@ export default async function About() {
     marginTop: '40px'
 			}}
 		>
-			<div dangerouslySetInnerHTML={{ __html: aboutContent[0] }}></div>
+			{/* <div dangerouslySetInnerHTML={{ __html: aboutContent[0] }}></div>
 			<div
 				dangerouslySetInnerHTML={{ __html: experienceContent }}
 				// style={{ fontFamily: 'Source Serif Pro' }}
@@ -27,7 +27,7 @@ export default async function About() {
 				dangerouslySetInnerHTML={{ __html: aboutContent[11] }}
 				style={{ fontSize: '12px' }}
 			></div>
-			<div dangerouslySetInnerHTML={{ __html: aboutContent[12] }}></div>
+			<div dangerouslySetInnerHTML={{ __html: aboutContent[12] }}></div> */}
 		</div>
 	)
 }

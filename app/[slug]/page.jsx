@@ -112,7 +112,7 @@ export default async function SinglePage({ params, searchParams }) {
 				<ArrowUp />
 			</div>
 			<PageSwipeCloseMenu /> */}
-			{/* <Thumbnails category={searchParams.category} />  */}
+			<Thumbnails category={searchParams.category} /> 
 		</div>
 	)
 }

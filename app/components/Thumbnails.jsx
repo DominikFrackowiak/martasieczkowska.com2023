@@ -2,26 +2,28 @@ import styles from './Thumbnails.module.scss'
 
 import getAllPosts from '../../lib/getAllPosts'
 import getThumbnailsByCategory from '../../lib/getThumbnailsByCategory'
+import getAllThumbnails from '../../lib/getAllThumbnails'
 
 import SingleThumbnail from '../components/SingleThumbnail'
 
 export default async function Thumbnails({ category }) {
-	let receivedData
-	let data =[]
+	let data
 
 	if (category === undefined) {
-		receivedData = await getThumbnailsByCategory(category)
+		data = await getAllThumbnails()
 	} else {
-		receivedData = await getThumbnailsByCategory(category)
+		data = await getThumbnailsByCategory(category)
 	}
 
-	data.push(receivedData)
+	console.log(data)
+
+	data = data?.reverse()
 
 	return (
 		<div className='responsiveWrapper'>
 			<div className={styles.thumbnails}>
-				{data.length &&
-					data.reverse().map(thumbnail => {
+				{data.length > 0 &&
+					data.map(thumbnail => {
 						return (
 							<SingleThumbnail
 								key={thumbnail.thumbnail.id}
