@@ -8,6 +8,10 @@
 	transition: 0.5s;
 }
 
+.notDisplayOnMobile{
+	display: none;
+}
+
 .galleryImage {
 	// opacity: 0;
 	width: 320px;

@@ -5,7 +5,7 @@ import styles from './Gallery.module.scss'
 import { motion } from 'framer-motion'
 
 export default function Gallery({ images, headingInnerText, postInnerText }) {
-	// const imageRefs = useRef([])
+	const imageRefs = useRef([])
 
 	// useEffect(() => {
 	// 	imageRefs.current = imageRefs.current.slice(0, images.length)
@@ -33,25 +33,25 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 			className={styles.galleryWrapper}
 		>
 			<h1>
-				<div dangerouslySetInnerHTML={{ __html: headingInnerText }}></div>
+				{headingInnerText}
 			</h1>
 
 			<p>{postInnerText}</p>
-			{/* {images.map((img, index) => (
-				<div key={index} ref={el => (imageRefs.current[index] = el)}>
+			{images.map((img, index) => (
+				<section key={img.attributes.id} ref={el => (imageRefs.current[index] = el)} className={img.attributes.className}>
 					<Image
-						key={index}
-						src={img.url}
-						alt={img.alt}
-						width={img.width}
-						height={img.height}
+						
+						src={img.attributes.url}
+						alt={img.htmlContent}
+						width={img.attributes.width}
+						height={img.attributes.height}
 						className={styles.galleryImage}
 						quality={80}
 						sizes='(max-width: 575px) 320px, (max-width: 991px) 576px, (max-width: 1199px) 668px, 724px'
 					/>
 					{img.caption && <small>{img.caption}</small>}
-				</div>
-			))} */}
+				</section>
+			))}
 		</motion.div>
 	)
 }
