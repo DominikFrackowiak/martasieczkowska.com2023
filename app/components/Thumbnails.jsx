@@ -15,7 +15,7 @@ export default async function Thumbnails({ category }) {
 		data = await getThumbnailsByCategory(category)
 	}
 
-	console.log(data)
+
 
 	data = data?.reverse()
 
