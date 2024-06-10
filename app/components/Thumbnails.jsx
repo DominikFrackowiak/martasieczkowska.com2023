@@ -6,6 +6,8 @@ import getAllThumbnails from '../../lib/getAllThumbnails'
 
 import SingleThumbnail from '../components/SingleThumbnail'
 
+export const revalidate = 60
+
 export default async function Thumbnails({ category }) {
 	let data
 

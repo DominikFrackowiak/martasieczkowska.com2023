@@ -31,6 +31,8 @@ export async function generateMetadata({ params }) {
 	}
 }
 
+export const revalidate = 60
+
 export default async function SinglePage({ params, searchParams }) {
 	
 	const {heading, description, images} = await handleDataToDisplayInGallery(params)
