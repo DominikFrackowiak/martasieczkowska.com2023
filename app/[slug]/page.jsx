@@ -5,6 +5,7 @@ import parse from 'html-react-parser'
 import getPost from '../../lib/getPost'
 import getAllPosts from '../../lib/getAllPosts'
 import getAllPostsByCategory from '../../lib/getAllPostsByCategory'
+import getAllSlugs from '../../lib/getAllSlugs'
 
 import Gallery from '../components/Gallery'
 import { notFound } from 'next/navigation'
@@ -24,6 +25,11 @@ const scrollToTop = () => {
 	})
 }
 
+export async function generateStaticParams(){
+   const data = await getAllSlugs()
+   return data
+}
+
 export async function generateMetadata({ params }) {
 	return {
 		title: `Marta Sieczkowska | ${params.slug.replaceAll('-', ' ')}`,
@@ -31,41 +37,19 @@ export async function generateMetadata({ params }) {
 	}
 }
 
+
+
 export const revalidate = 60
 
 export default async function SinglePage({ params, searchParams }) {
 	
 	const {heading, description, images} = await handleDataToDisplayInGallery(params)
- 
+ const data = await getAllSlugs()
 
-	// console.log(heading)
 	
 
-	// if (searchParams.category === undefined) {
-	// 	data = await getAllPosts()
-	// } else {
-	// 	data = await getAllPosts()
-
-	// 	data = data.filter(el => el.acf.category.slug === searchParams.category)
-	// }
-
-	// const acFields = post[0].acf
-
-	// function extractLargeImageURLs(obj) {
-	// 	let images = []
-	// 	for (let key in obj) {
-	// 		if (obj.hasOwnProperty(key) && key.includes('large_image')) {
-	// 			images.push(obj[key])
-	// 		}
-	// 	}
-
-	// 	return images
-	// }
-
-	// const largeImages = extractLargeImageURLs(acFields)
-
-	// const allSlugs = data.map(el => el.acf.slug)
-	// const currentSlugIndex = allSlugs.indexOf(params.slug)
+	const allSlugs = data.map(el => el.slug)
+	const currentSlugIndex = allSlugs.indexOf(params.slug)
 
 	 
 
@@ -78,7 +62,7 @@ export default async function SinglePage({ params, searchParams }) {
 				headingInnerText={heading}
 				postInnerText={description}
 			/>
-			{/*<div
+			<div
 				style={{
 					display: 'flex',
 					gap: '20px',
@@ -113,17 +97,10 @@ export default async function SinglePage({ params, searchParams }) {
 				</Link>
 				<ArrowUp />
 			</div>
-			<PageSwipeCloseMenu /> */}
+			<PageSwipeCloseMenu />
 			<Thumbnails category={searchParams.category} /> 
 		</div>
 	)
 }
 
-// export async function generateStaticParams() {
-// 	const postsData = getAllPosts()
-// 	const posts = await postsData
 
-
-
-// 	return posts.map(post => ({ slug: post.acf.slug }))
-// }
