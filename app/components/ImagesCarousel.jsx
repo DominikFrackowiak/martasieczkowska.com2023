@@ -23,7 +23,13 @@ export const ImagesCarousel = ({ images, index, handleStateChange }) => {
 			<Carousel.Viewport>
 				<Carousel.ItemGroup>
 					<Carousel.Item key={index} index={index}>
-						<img src={`${images[index]}`} alt={`Slide ${index}`} min-width='200px'/>
+						<Image
+							src={images[index]}
+							alt={`Slide ${index}`}
+							width={500} // specify appropriate width
+							height={300} // specify appropriate height
+							quality={90} // adjust quality as needed
+						/>
 					</Carousel.Item>
 				</Carousel.ItemGroup>
 			</Carousel.Viewport>
