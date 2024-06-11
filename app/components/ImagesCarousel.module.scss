@@ -11,6 +11,14 @@
 // }
 
 .fullImage {
-	// width: 100%;
+	width: 100%;
 	height: auto;
+ cursor: pointer;
+}
+
+@media (min-width: 992px) {
+	.fullImage {
+		width: auto;
+		height: auto;
+	}
 }
