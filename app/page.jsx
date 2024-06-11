@@ -1,4 +1,4 @@
-import Header from './components/HEader'
+import Header from './components/Header'
 import Thumbnails from './components/Thumbnails'
 
 import About from './components/About'
