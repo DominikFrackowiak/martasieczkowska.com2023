@@ -11,7 +11,17 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 
 	console.log(images)
 
-	const imagesSizes = images.map(image => ({height: image.attributes.height, width: image.attributes.width}))
+	const scrollToTop = () => {
+		window.scrollTo({
+			top: 0,
+			behavior: 'smooth',
+		})
+	}
+
+	const imagesSizes = images.map(image => ({
+		height: image.attributes.height,
+		width: image.attributes.width,
+	}))
 
 	const [clickedImageIndex, setClickedImageIndex] = useState(-1)
 	// useEffect(() => {
@@ -63,7 +73,10 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 								className={styles.galleryImage}
 								quality={70}
 								sizes='(max-width: 575px) 320px, (max-width: 991px) 576px, (max-width: 1199px) 668px, 724px'
-								onClick={() => setClickedImageIndex(index)}
+								onClick={() => {
+									scrollToTop()
+									setClickedImageIndex(index)
+								}}
 							/>
 							{img.caption && <small>{img.caption}</small>}
 						</section>
