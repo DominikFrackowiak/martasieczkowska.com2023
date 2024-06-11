@@ -1,7 +1,7 @@
 import { Carousel } from '@ark-ui/react'
 import Image from 'next/image'
 
-export const ImagesCarousel = ({ images, index, handleStateChange }) => {
+export const ImagesCarousel = ({ images, index, handleStateChange, imagesSizes }) => {
 	console.log(images)
 	return (
 		<Carousel.Root
@@ -26,8 +26,8 @@ export const ImagesCarousel = ({ images, index, handleStateChange }) => {
 						<Image
 							src={images[index]}
 							alt={`Slide ${index}`}
-							width={500} // specify appropriate width
-							height={300} // specify appropriate height
+							width={imagesSizes[index].width} // specify appropriate width
+							height={imagesSizes[index].height} // specify appropriate height
 							quality={90} // adjust quality as needed
 						/>
 					</Carousel.Item>

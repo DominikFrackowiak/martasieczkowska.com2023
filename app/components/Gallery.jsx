@@ -9,6 +9,10 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 	const imageRefs = useRef([])
 	const imagesURLS = images.map(image => image.attributes.url)
 
+	console.log(images)
+
+	const imagesSizes = images.map(image => ({height: image.attributes.height, width: image.attributes.width}))
+
 	const [clickedImageIndex, setClickedImageIndex] = useState(-1)
 	// useEffect(() => {
 	// 	imageRefs.current = imageRefs.current.slice(0, images.length)
@@ -71,6 +75,7 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 					images={imagesURLS}
 					index={clickedImageIndex}
 					handleStateChange={handleStateChange}
+					imagesSizes={imagesSizes}
 				/>
 			)}
 		</>
