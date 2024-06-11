@@ -10,7 +10,7 @@ import handleDataToDisplayInGallery from '../../utils/handleDataToDisplayInGalle
 
 import Gallery from '../components/Gallery'
 import { notFound } from 'next/navigation'
-import Navigation from '../components/Navigation'
+import Header from '../components/Header'
 import Thumbnails from '../components/Thumbnails'
 import ArrowUp from '../components/ArrowUp'
 import PageSwipeCloseMenu from '../components/PageSwipeCloseMenu'
@@ -58,7 +58,7 @@ export default async function SinglePage({ params, searchParams }) {
 
 	return (
 		<div className='responsiveWrapper'>
-			<Navigation searchParams={searchParams} />
+			<Header searchParams={searchParams} />
 
 			<Gallery
 				images={images}

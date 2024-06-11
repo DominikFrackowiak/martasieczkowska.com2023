@@ -1,4 +1,4 @@
-import Navigation from './components/Navigation'
+import Header from './components/HEader'
 import Thumbnails from './components/Thumbnails'
 
 import About from './components/About'
@@ -11,7 +11,7 @@ export default function Home({ searchParams }) {
  
 	return (
 		<>
-			<Navigation searchParams={searchParams} />
+			<Header searchParams={searchParams} />
 			<div className='responsiveWrapper'>
 				{searchParams.about==='true' && <About/>}
 			</div>
