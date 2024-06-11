@@ -12,9 +12,9 @@ const roboto = Roboto({
 	display: 'swap',
 })
 
-import styles from './Navigation.module.scss'
+import styles from './Header.module.scss'
 
-export default function Navigation({ searchParams }) {
+export default function Header({ searchParams }) {
 	const router = useRouter()
 	return (
 		<div className='responsiveWrapper'>
@@ -24,6 +24,8 @@ export default function Navigation({ searchParams }) {
 					justifyContent: 'space-between',
 					alignItems: 'center',
 					width: '100%',
+					// border: '1px solid red',
+					marginBottom: '20px'
 				}}
 			>
 				<Link href='/'>
@@ -34,7 +36,7 @@ export default function Navigation({ searchParams }) {
 						alt='Marta Sieczkowska logo'
 					/>
 				</Link>
-				<div className={styles.navigationMenu}>
+				<nav className={styles.navigationMenu}>
 					{/* <Link href={'/?category=graphic-design'}>graphic design</Link>
 					<Link href={'/?category=illustration'}>illustration</Link>
 					<Link href='/#about'>about</Link> */}
@@ -88,7 +90,7 @@ export default function Navigation({ searchParams }) {
 					>
 						about
 					</p>
-				</div>
+				</nav>
 			</div>
 		</div>
 	)

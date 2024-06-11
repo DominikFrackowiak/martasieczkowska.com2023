@@ -8,8 +8,32 @@ import { ImagesCarousel } from '../components/ImagesCarousel'
 export default function Gallery({ images, headingInnerText, postInnerText }) {
 	const imageRefs = useRef([])
 	const imagesURLS = images.map(image => image.attributes.url)
+	const [windowWidth, setWindowWidth] = useState('')
 
 	console.log(images)
+
+	useEffect(() => {
+		setTimeout(() => {
+			setWindowWidth(window.innerWidth)
+		}, 500)
+
+		const handleResize = () => {
+			setWindowWidth(window.innerWidth)
+		}
+
+		window.addEventListener('resize', handleResize)
+
+		// Clean up the event listener on component unmount
+		return () => {
+			window.removeEventListener('resize', handleResize)
+		}
+	}, [])
+
+	useEffect(() => {
+		if (windowWidth < 768) {
+			setClickedImageIndex(-1)
+		}
+	}, [windowWidth])
 
 	const scrollToTop = () => {
 		window.scrollTo({
@@ -49,7 +73,7 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 
 	return (
 		<>
-			{clickedImageIndex < 0 && (
+			{clickedImageIndex === -1 && (
 				<motion.div
 					initial={{ opacity: 0, x: '-100vw' }}
 					animate={{ opacity: 1, x: 0 }}
@@ -76,7 +100,7 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 								sizes='(max-width: 575px) 320px, (max-width: 991px) 576px, (max-width: 1199px) 668px, 724px'
 								onClick={() => {
 									scrollToTop()
-									setClickedImageIndex(index)
+									if (windowWidth >= 768) setClickedImageIndex(index)
 								}}
 							/>
 							{img.caption && <small>{img.caption}</small>}
@@ -84,7 +108,7 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 					))}
 				</motion.div>
 			)}
-			{clickedImageIndex >= 0 && (
+			{clickedImageIndex >= 0 && windowWidth >= 768 && (
 				<ImagesCarousel
 					images={imagesURLS}
 					index={clickedImageIndex}

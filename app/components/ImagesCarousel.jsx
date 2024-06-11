@@ -29,7 +29,7 @@ export const ImagesCarousel = ({
 				justifyContent: 'center',
 				alignItems: 'center',
 			}}
-			className='responsiveWrapper'
+			className={styles.carouselWrapper}
 			onClick={handleStateChange}
 		>
 			<Carousel.Viewport>
