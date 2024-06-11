@@ -1,4 +1,4 @@
-// import { parse } from '@wordpress/block-serialization-default-parser'
+import { Suspense } from 'react'
 import { v4 as uuid } from 'uuid'
 import parse from 'html-react-parser'
 
@@ -9,6 +9,7 @@ import getAllSlugs from '../../lib/getAllSlugs'
 import handleDataToDisplayInGallery from '../../utils/handleDataToDisplayInGallery'
 
 import Gallery from '../components/Gallery'
+import Loading from '../loading'
 import { notFound } from 'next/navigation'
 import Header from '../components/Header'
 import Thumbnails from '../components/Thumbnails'
@@ -48,7 +49,7 @@ export default async function SinglePage({ params, searchParams }) {
 	let data
 
 	if (searchParams.category !== undefined) {
-		data = await getSlugsByCategory(searchParams.cetegory)
+		data = await getSlugsByCategory(searchParams.category) // Fixed typo 'cetegory' to 'category'
 	} else {
 		data = await getAllSlugs()
 	}
@@ -58,28 +59,32 @@ export default async function SinglePage({ params, searchParams }) {
 
 	return (
 		<div className='responsiveWrapper'>
-			<Header searchParams={searchParams} />
-
-			<Gallery
-				images={images}
-				headingInnerText={heading}
-				postInnerText={description}
-			/>
-			<div
-				style={{
-					display: 'flex',
-					gap: '20px',
-				}}
-			>
-				<SwipeRight category={searchParams.category} currentSlugIndex={currentSlugIndex} allSlugs={allSlugs} />
-
-				<Link href={`/`}>
-					<p>-</p>
-				</Link>
-				<ArrowUp />
-			</div>
-			<PageSwipeCloseMenu />
-			<Thumbnails category={searchParams.category} />
+			
+			<Suspense fallback={<Loading />}>
+				<Gallery
+					images={images}
+					headingInnerText={heading}
+					postInnerText={description}
+				/>
+				<div
+					style={{
+						display: 'flex',
+						gap: '20px',
+					}}
+				>
+					<SwipeRight
+						category={searchParams.category}
+						currentSlugIndex={currentSlugIndex}
+						allSlugs={allSlugs}
+					/>
+					<Link href={`/`}>
+						<p>-</p>
+					</Link>
+					<ArrowUp />
+				</div>
+				<PageSwipeCloseMenu />
+			</Suspense>
+		
 		</div>
 	)
 }

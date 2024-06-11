@@ -8,15 +8,17 @@ import Image from 'next/image'
 import styles from './page.module.scss'
 
 export default function Home({ searchParams }) {
+
+	const category = searchParams.category
  
 	return (
 		<>
-			<Header searchParams={searchParams} />
+			{/* <Header searchParams={searchParams} /> */}
 			<div className='responsiveWrapper'>
 				{searchParams.about==='true' && <About/>}
 			</div>
-			<main className={styles.main}></main>
-			<Thumbnails category={searchParams.category} />
+			{/* <main className={styles.main}></main> */}
+			<Thumbnails category={category} />
 		</>
 	)
 }

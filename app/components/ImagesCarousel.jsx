@@ -9,7 +9,7 @@ export const ImagesCarousel = ({
 	handleStateChange,
 	imagesSizes,
 }) => {
-	console.log(images)
+
 	return (
 		<Carousel.Root
 			align='center'

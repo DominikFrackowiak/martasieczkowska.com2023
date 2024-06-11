@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useRouter, usePathname } from 'next/navigation'
+import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 
 import { Roboto } from 'next/font/google'
@@ -15,11 +15,16 @@ const roboto = Roboto({
 
 import styles from './Header.module.scss'
 
-export default function Header({ searchParams }) {
+export default function Header() {
 	const router = useRouter()
 	const pathname = usePathname()
+ const searchParams = useSearchParams() 
 
-	console.log(pathname)
+	const category = searchParams.get('category')
+	const about = searchParams.get('about')
+
+
+	// console.log(pathname)
 	return (
 		<header className='responsiveWrapper'>
 			<div
@@ -49,7 +54,7 @@ export default function Header({ searchParams }) {
 					<p
 						className={roboto.className}
 						onClick={() => {
-							if (searchParams.category !== 'graphic-design') {
+							if (category !== 'graphic-design') {
 								router.push('/?category=graphic-design')
 							} else {
 								router.push('/')
@@ -58,7 +63,7 @@ export default function Header({ searchParams }) {
 						}}
 						style={{
 							fontWeight:
-								searchParams.category !== 'graphic-design' ? 'normal' : 'bold',
+								category !== 'graphic-design' ? 'normal' : 'bold',
 						}}
 					>
 						graphic design
@@ -66,7 +71,7 @@ export default function Header({ searchParams }) {
 					<p
 						className={roboto.className}
 						onClick={() => {
-							if (searchParams.category !== 'illustration') {
+							if (category !== 'illustration') {
 								router.push('/?category=illustration')
 							} else {
 								router.push('/')
@@ -75,7 +80,7 @@ export default function Header({ searchParams }) {
 						}}
 						style={{
 							fontWeight:
-								searchParams.category !== 'illustration' ? 'normal' : 'bold',
+								category !== 'illustration' ? 'normal' : 'bold',
 						}}
 					>
 						illustration
@@ -83,7 +88,7 @@ export default function Header({ searchParams }) {
 					<p
 						className={roboto.className}
 						onClick={() => {
-							if (searchParams.about !== 'true') {
+							if (about !== 'true') {
 								router.push('/?about=true')
 							} else {
 								router.push('/')
@@ -91,7 +96,7 @@ export default function Header({ searchParams }) {
 							router.refresh()
 						}}
 						style={{
-							fontWeight: searchParams.about !== 'true' ? 'normal' : 'bold',
+							fontWeight: about !== 'true' ? 'normal' : 'bold',
 						}}
 					>
 						about
@@ -99,7 +104,7 @@ export default function Header({ searchParams }) {
 				</nav>
 			</div>
 			<div className={styles.mobileHeader}>
-				{searchParams.menu === 'true' && (
+				{searchParams?.menu === 'true' && (
 					<motion.div
 						initial={{ opacity: 0, y: '100%', zIndex: 0 }}
 						animate={{ opacity: 1, y: 0 }}
@@ -110,7 +115,7 @@ export default function Header({ searchParams }) {
 							<p
 								className={roboto.className}
 								onClick={() => {
-									if (searchParams.category !== 'graphic-design') {
+									if (category !== 'graphic-design') {
 										router.push('/?category=graphic-design')
 									} else {
 										router.push('/')
@@ -119,7 +124,7 @@ export default function Header({ searchParams }) {
 								}}
 								style={{
 									fontWeight:
-										searchParams.category !== 'graphic-design'
+										category !== 'graphic-design'
 											? 'normal'
 											: 'bold',
 								}}
@@ -129,7 +134,7 @@ export default function Header({ searchParams }) {
 							<p
 								className={roboto.className}
 								onClick={() => {
-									if (searchParams.category !== 'illustration') {
+									if (category !== 'illustration') {
 										router.push('/?category=illustration')
 									} else {
 										router.push('/')
@@ -138,7 +143,7 @@ export default function Header({ searchParams }) {
 								}}
 								style={{
 									fontWeight:
-										searchParams.category !== 'illustration'
+										category !== 'illustration'
 											? 'normal'
 											: 'bold',
 								}}
@@ -148,7 +153,7 @@ export default function Header({ searchParams }) {
 							<p
 								className={roboto.className}
 								onClick={() => {
-									if (searchParams.about !== 'true') {
+									if (about !== 'true') {
 										router.push('/?about=true')
 									} else {
 										router.push('/')
@@ -156,7 +161,7 @@ export default function Header({ searchParams }) {
 									router.refresh()
 								}}
 								style={{
-									fontWeight: searchParams.about !== 'true' ? 'normal' : 'bold',
+									fontWeight: about !== 'true' ? 'normal' : 'bold',
 								}}
 							>
 								about

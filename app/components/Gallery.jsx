@@ -10,7 +10,7 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 	const imagesURLS = images.map(image => image.attributes.url)
 	const [windowWidth, setWindowWidth] = useState('')
 
-	console.log(images)
+	// console.log(images)
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -67,7 +67,7 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 	// console.log(images)
 
 	function handleStateChange() {
-		console.log('clicked')
+	
 		setClickedImageIndex(-1)
 	}
 

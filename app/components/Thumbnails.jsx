@@ -8,16 +8,20 @@ import SingleThumbnail from '../components/SingleThumbnail'
 
 export const revalidate = 60
 
-export default async function Thumbnails({ category }) {
+export default async function Thumbnails({category}) {
+
+	console.log(category)
+	
 	let data
 
 	if (category === undefined) {
 		data = await getAllThumbnails()
 	} else {
 		data = await getThumbnailsByCategory(category)
-	}
 
+}
 
+	
 
 	data = data?.reverse()
 
