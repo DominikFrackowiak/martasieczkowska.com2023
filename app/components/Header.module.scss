@@ -1,12 +1,48 @@
+.headerDesktop {
+	display: none;
+
+	@media (min-width: 768px) {
+		display: flex;
+	}
+}
+
 .navigationMenu {
 	display: flex;
 	justify-content: space-between;
 	width: 250px;
 	// font-family: 'roboto';
- color: #161515;
+	color: #161515;
 
-	p{
+	p {
 		// font-family: 'roboto';
 		cursor: pointer;
 	}
+}
+
+.mobileHeader {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 300;
+ background-color: #fff;
+	margin-bottom: 20px;
+	@media (min-width: 768px) {
+		display: none;
+	}
+}
+
+.mobileNavigationMenu {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	gap: 10px;
+	padding: 15px 0;
+	border-bottom: 1px solid black;
+	cursor: pointer;
+}
+
+.mobileLogo{
+	height: 60px;
 }
