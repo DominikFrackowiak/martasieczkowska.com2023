@@ -1,6 +1,8 @@
 import { Carousel } from '@ark-ui/react'
 import Image from 'next/image'
 
+import styles from './ImagesCarousel.module.scss'
+
 export const ImagesCarousel = ({ images, index, handleStateChange, imagesSizes }) => {
 	console.log(images)
 	return (
@@ -23,13 +25,16 @@ export const ImagesCarousel = ({ images, index, handleStateChange, imagesSizes }
 			<Carousel.Viewport>
 				<Carousel.ItemGroup>
 					<Carousel.Item key={index} index={index}>
+						<div className={styles.imageWrapper}>
 						<Image
 							src={images[index]}
 							alt={`Slide ${index}`}
-							width={imagesSizes[index].width} // specify appropriate width
-							height={imagesSizes[index].height} // specify appropriate height
-							quality={90} // adjust quality as needed
+							width={imagesSizes[index].width} 
+							height={imagesSizes[index].height} 
+							quality={90} 
+							className={styles.fullImage}
 						/>
+						</div>
 					</Carousel.Item>
 				</Carousel.ItemGroup>
 			</Carousel.Viewport>
