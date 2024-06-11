@@ -55,6 +55,7 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 					animate={{ opacity: 1, x: 0 }}
 					exit={{ opacity: 0, x: '100vw' }}
 					className={styles.galleryWrapper}
+					transition={{ delay: 0.5 }}
 				>
 					<h1>{headingInnerText}</h1>
 

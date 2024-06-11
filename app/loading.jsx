@@ -13,14 +13,14 @@ export default function Loading() {
 				alignItems: 'center',
 			}}
 		>
-			<p>Thank you for your patience, we are busy loading....</p>
-			<Image
+			{/* <Image
 				src='/assets/logo_marta_big.svg'
 				aspectratio={400 / 300}
 				width={200}
 				height={150}
 				alt='logo Marta Sieczkowska'
-			/>
+			/> */}
+			<p>Please wait, loading...</p>
 		</div>
 	)
 }
