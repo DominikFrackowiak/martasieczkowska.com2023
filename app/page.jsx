@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import Header from './components/Header'
 import Thumbnails from './components/Thumbnails'
-import Loading from '../loading'
+import Loading from './loading'
 
 import About from './components/About'
 
