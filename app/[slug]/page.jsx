@@ -49,8 +49,7 @@ export default async function SinglePage({ params, searchParams }) {
 	let data
 
 	if (searchParams.category !== undefined) {
-		data = await getSlugsByCategory(searchParams.category) // Fixed typo 'cetegory' to 'category'
-	} else {
+		data = await getSlugsByCategory(searchParams.category) 
 		data = await getAllSlugs()
 	}
 
