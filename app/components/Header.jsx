@@ -6,6 +6,8 @@ import Image from 'next/image'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 
+import Loading from '../loading'
+
 import { Roboto } from 'next/font/google'
 
 const roboto = Roboto({
