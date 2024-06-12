@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import styles from './Gallery.module.scss'
 import { motion } from 'framer-motion'
 import { ImagesCarousel } from '../components/ImagesCarousel'
+import ArrowUp from './ArrowUp'
 
 export default function Gallery({ images, headingInnerText, postInnerText }) {
 	const imageRefs = useRef([])
@@ -83,6 +84,7 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 					<h1>{headingInnerText}</h1>
 
 					<p>{postInnerText}</p>
+					<ArrowUp smallerDevices={false} />
 					{images.map((img, index) => (
 						<section
 							key={img.attributes.id}
@@ -106,6 +108,7 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 							{img.caption ? <small>{img.caption}</small> : null}
 						</section>
 					))}
+					<ArrowUp smallerDevices={true} />
 				</motion.div>
 			)}
 			{clickedImageIndex >= 0 && windowWidth >= 768 && (
