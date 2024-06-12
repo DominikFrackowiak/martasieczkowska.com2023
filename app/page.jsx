@@ -16,7 +16,9 @@ export default function Home({ searchParams }) {
 		<>
 			{/* <Header searchParams={searchParams} /> */}
 			<div className='responsiveWrapper'>
-				{searchParams.about === 'true' && <About />}
+				<Suspense fallback={<Loading />}>
+					{searchParams.about === 'true' && <About />}
+				</Suspense>
 			</div>
 			{/* <main className={styles.main}></main> */}
 			<Suspense fallback={<Loading />}>

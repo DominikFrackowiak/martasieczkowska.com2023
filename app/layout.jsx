@@ -2,6 +2,8 @@
 import { Source_Serif_4 } from 'next/font/google'
 import './globals.scss'
 
+import { Suspense } from 'react'
+
 import Header from './components/Header'
 import Thumbnails from './components/Thumbnails'
 
@@ -15,15 +17,17 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
-	
 	return (
 		<html lang='en'>
 			{/* <body className={inter.className}> */}
 			<body className={SourceSerif.className}>
-				<Header />
+				<Suspense fallback={<p>Loading ...</p>}>
+					<Header />
+				</Suspense>
 				{children}
-				
-				<Footer />
+				<Suspense fallback={<p>Loading ...</p>}>
+					<Footer />
+				</Suspense>
 			</body>
 		</html>
 	)
