@@ -50,6 +50,7 @@ export default async function SinglePage({ params, searchParams }) {
 
 	if (searchParams.category !== undefined) {
 		data = await getSlugsByCategory(searchParams.category) 
+	} else {
 		data = await getAllSlugs()
 	}
 
