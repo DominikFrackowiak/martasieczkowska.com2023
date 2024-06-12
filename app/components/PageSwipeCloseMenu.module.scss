@@ -1,7 +1,28 @@
-.pageSwipeCloseMenuWrapper{
- display: flex;
- width: 100%;
- justify-content: center;
- align-items: center;
- border: 1px solid red;
+@import '../spacing';
+
+.pageSwipeCloseMenuWrapper {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	gap: $xs;
+
+	@media (min-width: 576px) {
+		gap: $s;
+	}
+
+	@media (min-width: 768px) {
+		gap: $m;
+	}
+	@media (min-width: 992px) {
+		gap: $l;
+	}
+	@media (min-width: 1100px) {
+		gap: $xl;
+	}
+}
+
+.arrowIcon {
+	color: #cecece;
+	font-size: 20px;
 }

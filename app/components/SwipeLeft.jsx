@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { FaAngleLeft } from 'react-icons/fa6'
+import styles from './PageSwipeCloseMenu.module.scss'
 
 export default function SwipeLeft({ category, currentSlugIndex, allSlugs }) {
 	const swiper =
@@ -11,7 +12,7 @@ export default function SwipeLeft({ category, currentSlugIndex, allSlugs }) {
 						: `/${allSlugs[allSlugs.length - 1]}?category=${category}`
 				}
 			>
-				<FaAngleLeft />
+				<FaAngleLeft className={styles.arrowIcon} />
 			</Link>
 		) : (
 			<Link
@@ -21,7 +22,7 @@ export default function SwipeLeft({ category, currentSlugIndex, allSlugs }) {
 						: `/${allSlugs[allSlugs.length - 1]}`
 				}
 			>
-				<FaAngleLeft />
+				<FaAngleLeft className={styles.arrowIcon} />
 			</Link>
 		)
 	return swiper
