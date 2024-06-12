@@ -1,8 +1,12 @@
+@import '../spacing';
+
 .thumbnails {
 	display: grid;
 	grid-template-columns: repeat(2, auto);
 	max-width: 320px;
 	gap: 10px;
+	border: 1px solid red;
+	margin-bottom: 20px;
 
 	@media (min-width: 576px) {
 		width: 576px;
