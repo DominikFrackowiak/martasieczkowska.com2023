@@ -15,6 +15,7 @@ export default function ArrowUp({smallerDevices}) {
 			className={`${styles.arrowWrapper} ${
 				smallerDevices ? styles.smallerDevices : styles.biggestDevices
 			}`}
+			onClick={()=>scrollToTop()}
 		>
 			<Image
 				src={'/icons/arrow.svg'}
