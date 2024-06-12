@@ -1,14 +1,30 @@
+@import '../spacing';
+
 .galleryWrapper {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: flex-start;
-	gap: 20px;
+	gap: $xs;
 	// transform: translateX(-105vw)
 	transition: 0.5s;
+
+	@media (min-width: 576px) {
+		gap: $s;
+	}
+
+	@media (min-width: 768px) {
+		gap: $m;
+	}
+	@media (min-width: 992px) {
+		gap: $l;
+	}
+	@media (min-width: 1100px) {
+		gap: $xl;
+	}
 }
 
-.notDisplayOnMobile{
+.notDisplayOnMobile {
 	display: none;
 }
 
@@ -35,7 +51,7 @@
 	}
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1100px) {
 	.galleryImage {
 		width: 724px;
 	}

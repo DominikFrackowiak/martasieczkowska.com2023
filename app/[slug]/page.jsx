@@ -59,7 +59,6 @@ export default async function SinglePage({ params, searchParams }) {
 
 	return (
 		<div className='responsiveWrapper'>
-			
 			<Suspense fallback={<Loading />}>
 				<Gallery
 					images={images}
@@ -84,7 +83,9 @@ export default async function SinglePage({ params, searchParams }) {
 				</div>
 				<PageSwipeCloseMenu />
 			</Suspense>
-		
+			<Suspense fallback={<Loading />}>
+				<Thumbnails category={searchParams.category} />
+			</Suspense>
 		</div>
 	)
 }
