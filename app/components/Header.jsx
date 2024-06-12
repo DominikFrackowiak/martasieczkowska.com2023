@@ -6,8 +6,6 @@ import Image from 'next/image'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 
-
-
 import { Roboto } from 'next/font/google'
 
 const roboto = Roboto({
@@ -21,11 +19,13 @@ import styles from './Header.module.scss'
 export default function Header() {
 	const router = useRouter()
 	const pathname = usePathname()
- const searchParams = useSearchParams() 
+	const searchParams = useSearchParams()
 
 	const category = searchParams.get('category')
 	const about = searchParams.get('about')
+	const menu = searchParams.get('menu')
 
+	console.log(menu)
 
 	// console.log(pathname)
 	return (
@@ -106,7 +106,7 @@ export default function Header() {
 					</nav>
 				</div>
 				<div className={styles.mobileHeader}>
-					{searchParams?.menu === 'true' && (
+					{menu === 'true' && (
 						<motion.div
 							initial={{ opacity: 0, y: '100%', zIndex: 0 }}
 							animate={{ opacity: 1, y: 0 }}
@@ -180,7 +180,7 @@ export default function Header() {
 						<p
 							className={roboto.className}
 							onClick={() => {
-								if (searchParams.menu !== 'true') {
+								if (menu !== 'true') {
 									router.push('/?menu=true')
 								} else {
 									router.push('/')

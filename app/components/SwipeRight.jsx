@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { FaAngleRight } from 'react-icons/fa6'
 
 export default function SwipeRight({ category, currentSlugIndex, allSlugs }) {
 	const swiper =
@@ -10,7 +11,7 @@ export default function SwipeRight({ category, currentSlugIndex, allSlugs }) {
 						: `/${allSlugs[0]}?category=${category}`
 				}
 			>
-				<p>+</p>
+				<FaAngleRight />
 			</Link>
 		) : (
 			<Link
@@ -20,7 +21,7 @@ export default function SwipeRight({ category, currentSlugIndex, allSlugs }) {
 						: `/${allSlugs[0]}`
 				}
 			>
-				<p>+</p>
+				<FaAngleRight />
 			</Link>
 		)
 	return swiper

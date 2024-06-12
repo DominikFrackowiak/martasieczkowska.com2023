@@ -17,7 +17,8 @@ import ArrowUp from '../components/ArrowUp'
 import PageSwipeCloseMenu from '../components/PageSwipeCloseMenu'
 import SwipeRight from '../components/SwipeRight'
 
-import Link from 'next/link'
+
+
 
 const scrollToTop = () => {
 	window.scrollTo({
@@ -70,18 +71,14 @@ export default async function SinglePage({ params, searchParams }) {
 						display: 'flex',
 						gap: '20px',
 					}}
-				>
-					<SwipeRight
-						category={searchParams.category}
-						currentSlugIndex={currentSlugIndex}
-						allSlugs={allSlugs}
-					/>
-					<Link href={`/`}>
-						<p>-</p>
-					</Link>
-					<ArrowUp />
-				</div>
-				<PageSwipeCloseMenu />
+				></div>
+				<Suspense fallback={<Loading />}>
+				<PageSwipeCloseMenu
+					category={searchParams.category}
+					currentSlugIndex={currentSlugIndex}
+					allSlugs={allSlugs}
+				/>
+				</Suspense>
 			</Suspense>
 			<Suspense fallback={<Loading />}>
 				<Thumbnails category={searchParams.category} />

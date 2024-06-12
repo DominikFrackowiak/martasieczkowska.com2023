@@ -3,7 +3,7 @@
 .galleryWrapper {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: flex-start;
 	align-items: flex-start;
 	gap: $xs;
 	// transform: translateX(-105vw)
