@@ -11,8 +11,6 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 	const imagesURLS = images.map(image => image.attributes.url)
 	const [windowWidth, setWindowWidth] = useState('')
 
-	console.log(images)
-
 	useEffect(() => {
 		setTimeout(() => {
 			setWindowWidth(window.innerWidth)
@@ -81,33 +79,47 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 					className={styles.galleryWrapper}
 					transition={{ delay: 0.5 }}
 				>
-					<h1>{headingInnerText}</h1>
-
-					<p>{postInnerText}</p>
-					<ArrowUp smallerDevices={false} />
+					<div
+						className={`${styles.galleryHeader} ${styles.galleryHeaderUpToLarge}`}
+					>
+						<h1>{headingInnerText}</h1>
+						<p>{postInnerText}</p>
+					</div>
 					{images.map((img, index) => (
 						<section
 							key={img.attributes.id}
 							ref={el => (imageRefs.current[index] = el)}
 							className={img.attributes.className}
 						>
-							<Image
-								src={img.attributes.url}
-								alt={img.htmlContent}
-								width={img.attributes.width}
-								height={img.attributes.height}
-								className={styles.galleryImage}
-								quality={70}
-								sizes='(max-width: 575px) 320px, (max-width: 991px) 576px, (max-width: 1199px) 668px, 724px'
-								onClick={() => {
-									scrollToTop()
-									if (windowWidth >= 768) setClickedImageIndex(index)
-								}}
-								style={{ display: 'block' }}
-							/>
-							{img.caption ? <small>{img.caption}</small> : null}
+							<div style={{ display: 'flex' }}>
+								<Image
+									src={img.attributes.url}
+									alt={img.htmlContent}
+									width={img.attributes.width}
+									height={img.attributes.height}
+									className={styles.galleryImage}
+									quality={70}
+									sizes='(max-width: 575px) 320px, (max-width: 991px) 576px, (max-width: 1199px) 668px, 724px'
+									onClick={() => {
+										scrollToTop()
+										if (windowWidth >= 768) setClickedImageIndex(index)
+									}}
+									style={{ display: 'block' }}
+								/>
+								{img.caption ? <small>{img.caption}</small> : null}
+								{index === 0 && (
+									<div
+										className={`${styles.galleryHeader} ${styles.galleryHeaderXLarge}`}
+									>
+										<h1>{headingInnerText}</h1>
+										<p>{postInnerText}</p>
+										<ArrowUp smallerDevices={false} />
+									</div>
+								)}
+							</div>
 						</section>
 					))}
+
 					<ArrowUp smallerDevices={true} />
 				</motion.div>
 			)}

@@ -24,6 +24,38 @@
 	}
 }
 
+.galleryHeader {
+	display: flex;
+	flex-direction: column;
+	gap: $xs;
+
+	@media (min-width: 576px) {
+		gap: $s;
+	}
+
+	@media (min-width: 768px) {
+		gap: $m;
+	}
+	@media (min-width: 992px) {
+		gap: $l;
+	}
+	@media (min-width: 1100px) {
+		display: none;
+	}
+}
+
+.galleryHeader.galleryHeaderXLarge {
+	display: none;
+	margin-left: 126px;
+	@media (min-width: 1100px) {
+		display: flex;
+	}
+
+	p {
+		font-size: 15px;
+	}
+}
+
 .notDisplayOnMobile {
 	display: none;
 }
