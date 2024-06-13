@@ -5,8 +5,9 @@ import styles from './Gallery.module.scss'
 import { motion } from 'framer-motion'
 import { ImagesCarousel } from '../components/ImagesCarousel'
 import ArrowUp from './ArrowUp'
+import GallerySwipeCloseMenu from './GallerySwipeCloseMenu'
 
-export default function Gallery({ images, headingInnerText, postInnerText }) {
+export default function Gallery({ images, headingInnerText, postInnerText, currentSlugIndex, allSlugs }) {
 	const imageRefs = useRef([])
 	const imagesURLS = images.map(image => image.attributes.url)
 	const [windowWidth, setWindowWidth] = useState('')
@@ -64,6 +65,14 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 	// }, [images])
 
 	// console.log(images)
+
+	function handleSwipeRight(){
+
+	}
+
+	function handleSwipeLeft(){
+		
+	}
 
 	function handleStateChange() {
 		setClickedImageIndex(-1)
@@ -124,12 +133,20 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 				</motion.div>
 			)}
 			{clickedImageIndex >= 0 && windowWidth >= 768 && (
-				<ImagesCarousel
-					images={imagesURLS}
-					index={clickedImageIndex}
-					handleStateChange={handleStateChange}
-					imagesSizes={imagesSizes}
-				/>
+				<>
+					<ImagesCarousel
+						images={imagesURLS}
+						index={clickedImageIndex}
+						handleStateChange={handleStateChange}
+						imagesSizes={imagesSizes}
+					/>
+					<GallerySwipeCloseMenu
+						images={imagesURLS}
+						index={clickedImageIndex}
+						handleSwipeRight={handleSwipeRight}
+						handleSwipeLeft={handleSwipeLeft}
+					/>
+				</>
 			)}
 		</>
 	)
