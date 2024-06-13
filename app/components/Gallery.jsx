@@ -1,5 +1,6 @@
 'use client'
-import Image from 'next/image'
+// import Image from 'next/image'
+import { CldImage } from 'next-cloudinary'
 import { useEffect, useRef, useState } from 'react'
 import styles from './Gallery.module.scss'
 import { motion } from 'framer-motion'
@@ -7,7 +8,13 @@ import { ImagesCarousel } from '../components/ImagesCarousel'
 import ArrowUp from './ArrowUp'
 import GallerySwipeCloseMenu from './GallerySwipeCloseMenu'
 
-export default function Gallery({ images, headingInnerText, postInnerText, currentSlugIndex, allSlugs }) {
+export default function Gallery({
+	images,
+	headingInnerText,
+	postInnerText,
+	currentSlugIndex,
+	allSlugs,
+}) {
 	const imageRefs = useRef([])
 	const imagesURLS = images.map(image => image.attributes.url)
 	const [windowWidth, setWindowWidth] = useState('')
@@ -66,13 +73,9 @@ export default function Gallery({ images, headingInnerText, postInnerText, curre
 
 	// console.log(images)
 
-	function handleSwipeRight(){
+	function handleSwipeRight() {}
 
-	}
-
-	function handleSwipeLeft(){
-		
-	}
+	function handleSwipeLeft() {}
 
 	function handleStateChange() {
 		setClickedImageIndex(-1)
@@ -101,14 +104,14 @@ export default function Gallery({ images, headingInnerText, postInnerText, curre
 							className={img.attributes.className}
 						>
 							<div style={{ display: 'flex' }}>
-								<Image
+								<CldImage
 									src={img.attributes.url}
 									alt={img.htmlContent}
 									width={img.attributes.width}
 									height={img.attributes.height}
 									className={styles.galleryImage}
 									quality={70}
-									sizes='(max-width: 575px) 320px, (max-width: 991px) 576px, (max-width: 1199px) 668px, 724px'
+									// sizes='(max-width: 575px) 320px, (max-width: 991px) 576px, (max-width: 1199px) 668px, 724px'
 									onClick={() => {
 										scrollToTop()
 										if (windowWidth >= 768) setClickedImageIndex(index)
