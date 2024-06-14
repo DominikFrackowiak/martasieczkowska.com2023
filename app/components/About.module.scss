@@ -1,0 +1,13 @@
+.experience {
+	display: flex;
+	flex-direction: column;
+	width: 255px;
+ font-size: 15px;
+ line-height: 1.5;
+}
+
+.experienceRow {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}

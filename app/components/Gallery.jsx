@@ -84,13 +84,14 @@ export default function Gallery({
 	return (
 		<>
 			{clickedImageIndex === -1 && (
-				<motion.div
-					initial={{ opacity: 0, x: '-100vw' }}
-					animate={{ opacity: 1, x: 0 }}
-					exit={{ opacity: 0, x: '100vw' }}
-					className={styles.galleryWrapper}
-					transition={{ delay: 0.5 }}
-				>
+				// <motion.div
+				// 	initial={{ opacity: 0, x: '-100vw' }}
+				// 	animate={{ opacity: 1, x: 0 }}
+				// 	exit={{ opacity: 0, x: '100vw' }}
+				// 	className={styles.galleryWrapper}
+				// 	transition={{ delay: 0.5 }}
+				// >
+				<div className={styles.galleryWrapper}>
 					<div
 						className={`${styles.galleryHeader} ${styles.galleryHeaderUpToLarge}`}
 					>
@@ -133,7 +134,8 @@ export default function Gallery({
 					))}
 
 					<ArrowUp smallerDevices={true} />
-				</motion.div>
+				</div>
+				// </motion.div>
 			)}
 			{clickedImageIndex >= 0 && windowWidth >= 768 && (
 				<>

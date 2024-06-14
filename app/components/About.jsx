@@ -1,5 +1,7 @@
 import getAboutPage from '../../lib/getAboutPage'
 
+import AboutExperience from './AboutExperience'
+
 export default async function About() {
  // const data = await getAboutPage()
  // const aboutContent = data[0].content.rendered.split('\n').filter(el => el !== '')
@@ -16,6 +18,8 @@ export default async function About() {
     marginTop: '40px'
 			}}
 		>
+
+			<AboutExperience/>
 			{/* <div dangerouslySetInnerHTML={{ __html: aboutContent[0] }}></div>
 			<div
 				dangerouslySetInnerHTML={{ __html: experienceContent }}
