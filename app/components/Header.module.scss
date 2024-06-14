@@ -34,8 +34,8 @@
 	align-items: center;
 	z-index: 300;
 	background-color: $white;
-	margin-bottom: 20px;
-	
+	margin: 20px 0;
+
 	@media (min-width: 768px) {
 		display: none;
 	}
@@ -52,7 +52,7 @@
 	cursor: pointer;
 }
 
-.mobileLogoContainer{
+.mobileLogoContainer {
 	display: flex;
 	flex-direction: column;
 }
