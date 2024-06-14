@@ -1,11 +1,12 @@
 @import '../spacing';
+@import '../colors';
 
 .thumbnails {
 	display: grid;
 	grid-template-columns: repeat(2, auto);
 	max-width: 320px;
 	gap: 10px;
- margin-bottom: 50px;
+	margin-bottom: 50px;
 
 	@media (min-width: 576px) {
 		width: 576px;
@@ -80,6 +81,14 @@
 		width: 100%;
 		padding-left: 8%;
 		background-color: #000022;
-		color: #fff;
+		color: $white;
+		* {
+			font-size: 0.94rem;
+			line-height: 120%;
+
+			@media (min-width: 1024px) {
+				font-size: 1.2rem;
+			}
+		}
 	}
 }

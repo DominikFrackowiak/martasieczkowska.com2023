@@ -98,29 +98,30 @@ export default function Gallery({
 						<h1>{headingInnerText}</h1>
 						<p>{postInnerText}</p>
 					</div>
-					{images.map((img, index) => (
-						<section
-							key={img.attributes.id}
-							ref={el => (imageRefs.current[index] = el)}
-							className={img.attributes.className}
-						>
-							<div style={{ display: 'flex' }}>
-								<CldImage
-									src={img.attributes.url}
-									alt={img.htmlContent}
-									width={img.attributes.width}
-									height={img.attributes.height}
-									className={styles.galleryImage}
-									quality={70}
-									// sizes='(max-width: 575px) 320px, (max-width: 991px) 576px, (max-width: 1199px) 668px, 724px'
-									onClick={() => {
-										scrollToTop()
-										if (windowWidth >= 768) setClickedImageIndex(index)
-									}}
-									style={{ display: 'block' }}
-								/>
-								{img.caption ? <small>{img.caption}</small> : null}
-								{index === 0 && (
+					<div className={styles.allImagesWrapper}>
+						{images.map((img, index) => (
+							<section
+								key={img.attributes.id}
+								ref={el => (imageRefs.current[index] = el)}
+								className={img.attributes.className}
+							>
+								<div style={{ display: 'flex' }}>
+									<CldImage
+										src={img.attributes.url}
+										alt={img.htmlContent}
+										width={img.attributes.width}
+										height={img.attributes.height}
+										className={styles.galleryImage}
+										quality={70}
+										// sizes='(max-width: 575px) 320px, (max-width: 991px) 576px, (max-width: 1199px) 668px, 724px'
+										onClick={() => {
+											scrollToTop()
+											if (windowWidth >= 768) setClickedImageIndex(index)
+										}}
+										style={{ display: 'block' }}
+									/>
+									{img.caption ? <small>{img.caption}</small> : null}
+									{/* {index === 0 && (
 									<div
 										className={`${styles.galleryHeader} ${styles.galleryHeaderXLarge}`}
 									>
@@ -128,12 +129,14 @@ export default function Gallery({
 										<p>{postInnerText}</p>
 										<ArrowUp smallerDevices={false} />
 									</div>
-								)}
-							</div>
-						</section>
-					))}
+								)} */}
+									<ArrowUp smallerDevices={false} />
+								</div>
+							</section>
+						))}
 
-					<ArrowUp smallerDevices={true} />
+						<ArrowUp smallerDevices={true} />
+					</div>
 				</div>
 				// </motion.div>
 			)}

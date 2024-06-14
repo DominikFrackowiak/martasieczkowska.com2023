@@ -3,10 +3,14 @@
 import { Suspense } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useRouter, usePathname, useSearchParams } from 'next/navigation'
-import { motion } from 'framer-motion'
+import { useSearchParams, useRouter } from 'next/navigation'
 
+import NavLink from './NavLink'
+
+import { motion } from 'framer-motion'
 import { Roboto } from 'next/font/google'
+
+import styles from './Header.module.scss'
 
 const roboto = Roboto({
 	weight: ['400', '700'],
@@ -14,33 +18,16 @@ const roboto = Roboto({
 	display: 'swap',
 })
 
-import styles from './Header.module.scss'
+import navLinks from '../../constants/navigationConstants'
 
 export default function Header() {
+	const menu = useSearchParams().get('menu')
 	const router = useRouter()
-	const pathname = usePathname()
-	const searchParams = useSearchParams()
 
-	const category = searchParams.get('category')
-	const about = searchParams.get('about')
-	const menu = searchParams.get('menu')
-
-	console.log(menu)
-
-	// console.log(pathname)
 	return (
 		<Suspense fallback={<div>Loading...</div>}>
 			<header className='responsiveWrapper'>
-				<div
-					style={{
-						justifyContent: 'space-between',
-						alignItems: 'center',
-						width: '100%',
-						// border: '1px solid red',
-						marginBottom: '20px',
-					}}
-					className={styles.headerDesktop}
-				>
+				<div className={styles.headerDesktop}>
 					<Link href='/'>
 						<Image
 							src={'/assets/logo_marta_big.svg'}
@@ -51,58 +38,15 @@ export default function Header() {
 					</Link>
 
 					<nav className={styles.navigationMenu}>
-						{/* <Link href={'/?category=graphic-design'}>graphic design</Link>
-					<Link href={'/?category=illustration'}>illustration</Link>
-					<Link href='/#about'>about</Link> */}
-
-						<p
-							className={roboto.className}
-							onClick={() => {
-								if (category !== 'graphic-design') {
-									router.push('/?category=graphic-design')
-								} else {
-									router.push('/')
-								}
-								router.refresh()
-							}}
-							style={{
-								fontWeight: category !== 'graphic-design' ? 'normal' : 'bold',
-							}}
-						>
-							graphic design
-						</p>
-						<p
-							className={roboto.className}
-							onClick={() => {
-								if (category !== 'illustration') {
-									router.push('/?category=illustration')
-								} else {
-									router.push('/')
-								}
-								router.refresh()
-							}}
-							style={{
-								fontWeight: category !== 'illustration' ? 'normal' : 'bold',
-							}}
-						>
-							illustration
-						</p>
-						<p
-							className={roboto.className}
-							onClick={() => {
-								if (about !== 'true') {
-									router.push('/?about=true')
-								} else {
-									router.push('/')
-								}
-								router.refresh()
-							}}
-							style={{
-								fontWeight: about !== 'true' ? 'normal' : 'bold',
-							}}
-						>
-							about
-						</p>
+						{navLinks.map(link => (
+							<NavLink
+								key={link.category}
+								category={link.category}
+								text={link.text}
+								queryKey={link.queryKey}
+								queryValue={link.queryValue}
+							/>
+						))}
 					</nav>
 				</div>
 				<div className={styles.mobileHeader}>
@@ -114,77 +58,24 @@ export default function Header() {
 							transition={{ delay: 0.5, duration: 0.7 }}
 						>
 							<nav className={styles.mobileNavigationMenu}>
-								<p
-									className={roboto.className}
-									onClick={() => {
-										if (category !== 'graphic-design') {
-											router.push('/?category=graphic-design')
-										} else {
-											router.push('/')
-										}
-										router.refresh()
-									}}
-									style={{
-										fontWeight:
-											category !== 'graphic-design' ? 'normal' : 'bold',
-									}}
-								>
-									graphic design
-								</p>
-								<p
-									className={roboto.className}
-									onClick={() => {
-										if (category !== 'illustration') {
-											router.push('/?category=illustration')
-										} else {
-											router.push('/')
-										}
-										router.refresh()
-									}}
-									style={{
-										fontWeight: category !== 'illustration' ? 'normal' : 'bold',
-									}}
-								>
-									illustration
-								</p>
-								<p
-									className={roboto.className}
-									onClick={() => {
-										if (about !== 'true') {
-											router.push('/?about=true')
-										} else {
-											router.push('/')
-										}
-										router.refresh()
-									}}
-									style={{
-										fontWeight: about !== 'true' ? 'normal' : 'bold',
-									}}
-								>
-									about
-								</p>
+								{navLinks.map(link => (
+									<NavLink
+										key={link.category}
+										category={link.category}
+										text={link.text}
+										queryKey={link.queryKey}
+										queryValue={link.queryValue}
+									/>
+								))}
 							</nav>
 						</motion.div>
 					)}
-					<div
-						style={{
-							display: 'flex',
-							flexDirection: 'column',
-							justifyContent: 'space-around',
-							alignItems: 'center',
-							width: '100%',
-							backgroundColor: '#fff',
-							zIndex: '400',
-						}}
-					>
-						<p
+					<div className={styles.mobileLogoContainer}>
+						<button
 							className={roboto.className}
 							onClick={() => {
-								if (menu !== 'true') {
-									router.push('/?menu=true')
-								} else {
-									router.push('/')
-								}
+								
+								router.push(menu !== 'true' ? '/?menu=true' : '/')
 								router.refresh()
 							}}
 							style={{
@@ -194,8 +85,7 @@ export default function Header() {
 							}}
 						>
 							MENU
-						</p>
-
+						</button>
 						<Link href='/'>
 							<Image
 								src={'/assets/logo_marta_big.svg'}

@@ -11,11 +11,32 @@
 
 html {
 	overflow-y: scroll;
+	font-size: 100%;
+	line-height: 1.5;
+
+	body{
+		color: $black;
+	}
+}
+
+h1{
+	font-size: 30px;
+	line-height: 1.2;
+}
+
+h2, p{
+	font-size: 0.94rem
 }
 
 a {
 	text-decoration: none;
 	color: #161515;
+}
+
+button{
+	background-color: transparent;
+	border: none;
+	font-size: 15px;
 }
 
 .displayNone {

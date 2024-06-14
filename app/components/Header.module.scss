@@ -1,5 +1,10 @@
+@import '../colors';
+
 .headerDesktop {
 	display: none;
+	justify-content: space-between;
+	width: 100%;
+	margin-bottom: 20px;
 
 	@media (min-width: 768px) {
 		display: flex;
@@ -11,11 +16,14 @@
 	justify-content: space-between;
 	width: 250px;
 	// font-family: 'roboto';
-	color: #161515;
+	color: $black;
 
-	p {
+	button {
 		// font-family: 'roboto';
 		cursor: pointer;
+		letter-spacing: 0.2px;
+		border: none;
+		background-color: transparent;
 	}
 }
 
@@ -25,8 +33,9 @@
 	justify-content: center;
 	align-items: center;
 	z-index: 300;
- background-color: #fff;
+	background-color: $white;
 	margin-bottom: 20px;
+	
 	@media (min-width: 768px) {
 		display: none;
 	}
@@ -39,10 +48,15 @@
 	align-items: center;
 	gap: 10px;
 	padding: 15px 0;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid $black;
 	cursor: pointer;
 }
 
-.mobileLogo{
+.mobileLogoContainer{
+	display: flex;
+	flex-direction: column;
+}
+
+.mobileLogo {
 	height: 60px;
 }
