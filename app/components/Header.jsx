@@ -7,7 +7,6 @@ import { useSearchParams, useRouter } from 'next/navigation'
 
 import NavLink from './NavLink'
 
-import { motion } from 'framer-motion'
 import { Roboto } from 'next/font/google'
 
 import styles from './Header.module.scss'
@@ -51,30 +50,23 @@ export default function Header() {
 				</div>
 				<div className={styles.mobileHeader}>
 					{menu === 'true' && (
-						<motion.div
-							initial={{ opacity: 0, y: '100%', zIndex: 0 }}
-							animate={{ opacity: 1, y: 0 }}
-							exit={{ opacity: 0, y: '100%', zIndex: 1 }}
-							transition={{ delay: 0.5, duration: 0.7 }}
-						>
-							<nav className={styles.mobileNavigationMenu}>
-								{navLinks.map(link => (
-									<NavLink
-										key={link.category}
-										category={link.category}
-										text={link.text}
-										queryKey={link.queryKey}
-										queryValue={link.queryValue}
-									/>
-								))}
-							</nav>
-						</motion.div>
+						<nav className={styles.mobileNavigationMenu}>
+							{navLinks.map(link => (
+								<NavLink
+									key={link.category}
+									category={link.category}
+									text={link.text}
+									queryKey={link.queryKey}
+									queryValue={link.queryValue}
+									styles={{ transition: '.3s', opacity: 1, cursor: 'pointer' }}
+								/>
+							))}
+						</nav>
 					)}
 					<div className={styles.mobileLogoContainer}>
 						<button
 							className={roboto.className}
 							onClick={() => {
-								
 								router.push(menu !== 'true' ? '/?menu=true' : '/')
 								router.refresh()
 							}}

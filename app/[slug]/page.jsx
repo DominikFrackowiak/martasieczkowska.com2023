@@ -12,6 +12,7 @@ import Loading from '../loading'
 import Thumbnails from '../components/Thumbnails'
 import ArrowUp from '../components/ArrowUp'
 import PageSwipeCloseMenu from '../components/PageSwipeCloseMenu'
+import { redirect } from 'next/navigation'
 
 export async function generateStaticParams() {
 	const data = await getAllSlugs()
@@ -32,11 +33,13 @@ export default async function SinglePage({ params, searchParams }) {
 		params
 	)
 
+	if (heading === undefined) redirect('/')
+
 	let allSlugs
 	let data
 
 	if (searchParams.category !== undefined) {
-		data = await getSlugsByCategory(searchParams.category) 
+		data = await getSlugsByCategory(searchParams.category)
 	} else {
 		data = await getAllSlugs()
 	}
@@ -44,7 +47,7 @@ export default async function SinglePage({ params, searchParams }) {
 	allSlugs = data.reverse().map(el => el.slug)
 	const currentSlugIndex = allSlugs.indexOf(params.slug)
 
-	return (
+	const contentToDisplay = (
 		<div className='responsiveWrapper'>
 			<Suspense fallback={<Loading />}>
 				<Gallery
@@ -73,4 +76,6 @@ export default async function SinglePage({ params, searchParams }) {
 			</Suspense>
 		</div>
 	)
+
+	return contentToDisplay
 }

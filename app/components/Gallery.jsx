@@ -16,7 +16,7 @@ export default function Gallery({
 	allSlugs,
 }) {
 	const imageRefs = useRef([])
-	const imagesURLS = images.map(image => image.attributes.url)
+	const imagesURLS = images?.map(image => image.attributes.url)
 	const [windowWidth, setWindowWidth] = useState('')
 
 	useEffect(() => {
@@ -49,7 +49,7 @@ export default function Gallery({
 		})
 	}
 
-	const imagesSizes = images.map(image => ({
+	const imagesSizes = images?.map(image => ({
 		height: image.attributes.height,
 		width: image.attributes.width,
 	}))
@@ -99,7 +99,7 @@ export default function Gallery({
 						<p>{postInnerText}</p>
 					</div>
 					<div className={styles.allImagesWrapper}>
-						{images.map((img, index) => (
+						{images?.map((img, index) => (
 							<section
 								key={img.attributes.id}
 								ref={el => (imageRefs.current[index] = el)}

@@ -8,7 +8,7 @@ const roboto = Roboto({
 	display: 'swap',
 })
 
-export default function NavLink({ category, text, queryKey, queryValue }) {
+export default function NavLink({ category, text, queryKey, queryValue, styles }) {
 	const router = useRouter()
 	const searchParams = useSearchParams()
 	const isActive = searchParams.get(queryKey) === queryValue
@@ -22,7 +22,7 @@ export default function NavLink({ category, text, queryKey, queryValue }) {
 		<button
 			className={roboto.className}
 			onClick={handleClick}
-			style={{ fontWeight: isActive ? 'bold' : 'normal' }}
+			style={{ fontWeight: isActive ? 'bold' : 'normal', ...styles }}
 		>
 			{text}
 		</button>
