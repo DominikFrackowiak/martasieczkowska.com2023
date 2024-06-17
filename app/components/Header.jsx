@@ -3,7 +3,7 @@
 import { Suspense, useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useSearchParams, useRouter } from 'next/navigation'
+
 
 import NavLink from './NavLink'
 
@@ -20,16 +20,17 @@ const roboto = Roboto({
 import navLinks from '../../constants/navigationConstants'
 
 export default function Header() {
-	const menu = useSearchParams().get('menu')
-	const router = useRouter()
+	
+	
+	const [showMenu, setShowMenu] = useState(false)
 	const [isOpaque, setIsOpaque] = useState(0)
 
 	useEffect(() => {
-		menu !== null ? setTimeout(() => setIsOpaque(1), 100) : setIsOpaque(0)
-	}, [menu])
+		showMenu ? setTimeout(() => setIsOpaque(1), 100) : setIsOpaque(0)
+	}, [showMenu])
 
 	return (
-		<Suspense fallback={<div>Loading...</div>}>
+		
 			<header className='responsiveWrapper'>
 				<div className={styles.headerDesktop}>
 					<Link href='/'>
@@ -54,7 +55,7 @@ export default function Header() {
 					</nav>
 				</div>
 				<div className={styles.mobileHeader}>
-					{menu === 'true' && (
+					{showMenu && (
 						<nav className={styles.mobileNavigationMenu}>
 							{navLinks.map((link, index) => (
 								<NavLink
@@ -77,8 +78,9 @@ export default function Header() {
 						<button
 							className={roboto.className}
 							onClick={() => {
-								router.push(menu !== 'true' ? '/?menu=true' : '/')
-								router.refresh()
+								// router.push(menu !== 'true' ? '/?menu=true' : '/')
+								// router.refresh()
+								setShowMenu(!showMenu)
 							}}
 							style={{
 								padding: '15px 0',
@@ -100,6 +102,6 @@ export default function Header() {
 					</div>
 				</div>
 			</header>
-		</Suspense>
+		
 	)
 }
