@@ -20,11 +20,6 @@ import navLinks from '../../constants/navigationConstants'
 
 export default function Header() {
 	const [showMenu, setShowMenu] = useState(false)
-	const [isOpaque, setIsOpaque] = useState(0)
-
-	useEffect(() => {
-		showMenu ? setTimeout(() => setIsOpaque(1), 100) : setIsOpaque(0)
-	}, [showMenu])
 
 	return (
 		<header className='responsiveWrapper'>
@@ -61,9 +56,6 @@ export default function Header() {
 								queryKey={link.queryKey}
 								queryValue={link.queryValue}
 								styles={{
-									transition: '.3s',
-									transitionDelay: `${index * 0.2}s`,
-									opacity: isOpaque,
 									cursor: 'pointer',
 
 									padding: '10px 10px',
