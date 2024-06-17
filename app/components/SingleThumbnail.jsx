@@ -1,8 +1,10 @@
 'use client'
 import Image from 'next/image'
 import styles from './Thumbnails.module.scss'
+import React, { useState } from 'react'
 
 import { useRouter } from 'next/navigation'
+import Loading from '../loading'
 
 const scrollToTop = () => {
 	window.scrollTo({
@@ -11,23 +13,32 @@ const scrollToTop = () => {
 	})
 }
 
-export default function SingleThumbnail({ thumbnail, description, category, slug }) {
+export default function SingleThumbnail({
+	thumbnail,
+	description,
+	category,
+	slug,
+}) {
+	const [loading, setLoading] = useState(false)
 	const router = useRouter()
-	
+
+	const handleClick = async e => {
+		e.preventDefault()
+
+		setLoading(true)
+
+		await router.push(category ? `/${slug}?category=${category}` : `/${slug}`)
+		scrollToTop()
+
+		setLoading(false)
+	}
+
 	return (
 		<>
+			{loading && <Loading />}
 			<div
 				key={thumbnail.alt}
-				onClick={() => {
-					// setThumbnailSelected(thumbnail.alt)
-					if (category === undefined) {
-						router.push(`/${slug}`)
-						scrollToTop()
-					} else {
-						router.push(`/${slug}?category=${category}`)
-						scrollToTop()
-					}
-				}}
+				onClick={handleClick}
 				className={styles.singleThumbnail}
 			>
 				<div
