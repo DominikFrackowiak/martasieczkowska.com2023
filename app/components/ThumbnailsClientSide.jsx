@@ -19,20 +19,16 @@ export default function ThumbnailsClientSide({ data, category }) {
 	const [loading, setLoading] = useState(false)
 	const router = useRouter()
 
-	const handleClick = async (e, slug) => {
+	const handleClick = (e, slug) => {
 		e.preventDefault()
 		console.log('clicked', slug)
 		setLoading(true)
 
-		await router.push(category ? `/${slug}?category=${category}` : `/${slug}`)
+		router.push(category ? `/${slug}?category=${category}` : `/${slug}`)
 		scrollToTop()
 
 		setLoading(false)
 	}
-
-	useEffect(() => {
-		alert(loading)
-	}, [loading])
 
 	return (
 		<>
