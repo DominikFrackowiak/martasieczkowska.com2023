@@ -31,26 +31,28 @@ export default function ThumbnailsClientSide({ data, category }) {
 	}
 
 	useEffect(() => {
-		console.log(loading)
+		alert(loading)
 	}, [loading])
 
 	return (
 		<>
 			{loading && <Loading />}
-			{!loading && <div className={styles.thumbnails}>
-				{data.length > 0 &&
-					data.map(thumbnail => {
-						return (
-							<SingleThumbnail
-								key={thumbnail.thumbnail.id}
-								thumbnail={thumbnail.thumbnail.link}
-								description={thumbnail.thumbnailDescription}
-								slug={thumbnail.slug}
-								handleClick={handleClick}
-							/>
-						)
-					})}
-			</div>}
+			{!loading && (
+				<div className={styles.thumbnails}>
+					{data.length > 0 &&
+						data.map(thumbnail => {
+							return (
+								<SingleThumbnail
+									key={thumbnail.thumbnail.id}
+									thumbnail={thumbnail.thumbnail.link}
+									description={thumbnail.thumbnailDescription}
+									slug={thumbnail.slug}
+									handleClick={handleClick}
+								/>
+							)
+						})}
+				</div>
+			)}
 		</>
 	)
 }
