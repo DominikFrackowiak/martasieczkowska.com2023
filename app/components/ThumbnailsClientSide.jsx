@@ -20,8 +20,6 @@ export default function ThumbnailsClientSide({ data, category }) {
 	const router = useRouter()
 
 	const handleClick = (e, slug) => {
-		e.preventDefault()
-
 		setLoading(true)
 
 		router.push(category ? `/${slug}?category=${category}` : `/${slug}`)
