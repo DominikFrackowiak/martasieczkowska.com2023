@@ -12,7 +12,7 @@ export default function SingleThumbnail({
 }) {
 	return (
 		<div
-			key={thumbnail.alt}
+			key={thumbnail?.alt}
 			className={styles.singleThumbnail}
 			onClick={e => handleClick(e, slug)}
 		>

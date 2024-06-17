@@ -63,13 +63,7 @@ export default async function SinglePage({ params, searchParams }) {
 						gap: '20px',
 					}}
 				></div>
-				{/* <Suspense fallback={<Loading />}>
-					<PageSwipeCloseMenu
-						category={searchParams.category}
-						currentSlugIndex={currentSlugIndex}
-						allSlugs={allSlugs}
-					/>
-				</Suspense> */}
+				
 			</Suspense>
 			<Suspense fallback={<Loading />}>
 				<Thumbnails category={searchParams.category} />

@@ -37,10 +37,10 @@ export default function ThumbnailsClientSide({ data, category }) {
 						data.map(thumbnail => {
 							return (
 								<SingleThumbnail
-									key={thumbnail.thumbnail.id}
-									thumbnail={thumbnail.thumbnail.link}
-									description={thumbnail.thumbnailDescription}
-									slug={thumbnail.slug}
+									key={thumbnail?.thumbnail?.id}
+									thumbnail={thumbnail?.thumbnail?.link}
+									description={thumbnail?.thumbnailDescription}
+									slug={thumbnail?.slug}
 									handleClick={handleClick}
 								/>
 							)
