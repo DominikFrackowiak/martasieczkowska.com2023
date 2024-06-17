@@ -11,6 +11,7 @@ export default function Loading() {
 				width: '100%',
 				justifyContent: 'center',
 				alignItems: 'center',
+				backgroundColor: 'rgba(255, 255, 255, .5)',
 			}}
 		>
 			<Image
