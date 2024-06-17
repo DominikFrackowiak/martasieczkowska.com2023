@@ -1,6 +1,6 @@
 'use client'
 
-import { Suspense } from 'react'
+import { Suspense, useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useSearchParams, useRouter } from 'next/navigation'
@@ -22,6 +22,11 @@ import navLinks from '../../constants/navigationConstants'
 export default function Header() {
 	const menu = useSearchParams().get('menu')
 	const router = useRouter()
+	const [isOpaque, setIsOpaque] = useState(0)
+
+	useEffect(() => {
+		menu !== null ? setTimeout(() => setIsOpaque(1), 100) : setIsOpaque(0)
+	}, [menu])
 
 	return (
 		<Suspense fallback={<div>Loading...</div>}>
@@ -51,14 +56,19 @@ export default function Header() {
 				<div className={styles.mobileHeader}>
 					{menu === 'true' && (
 						<nav className={styles.mobileNavigationMenu}>
-							{navLinks.map(link => (
+							{navLinks.map((link, index) => (
 								<NavLink
 									key={link.category}
 									category={link.category}
 									text={link.text}
 									queryKey={link.queryKey}
 									queryValue={link.queryValue}
-									styles={{ transition: '.3s', opacity: 1, cursor: 'pointer' }}
+									styles={{
+										transition: '.3s',
+										transitionDelay: `${index * 0.2}s`,
+										opacity: isOpaque,
+										cursor: 'pointer',
+									}}
 								/>
 							))}
 						</nav>

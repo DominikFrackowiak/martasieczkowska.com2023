@@ -13,13 +13,13 @@ export default function Loading() {
 				alignItems: 'center',
 			}}
 		>
-			{/* <Image
-				src='/assets/logo_marta_big.svg'
-				aspectratio={400 / 300}
-				width={200}
-				height={150}
+			<Image
+				unoptimized
+				src='/assets/loading.gif'
+				width={40}
+				height={40}
 				alt='logo Marta Sieczkowska'
-			/> */}
+			/>
 			<p>Please wait, loading...</p>
 		</div>
 	)
