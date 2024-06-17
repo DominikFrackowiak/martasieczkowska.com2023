@@ -37,7 +37,7 @@ export default function ThumbnailsClientSide({ data, category }) {
 	return (
 		<>
 			{loading && <Loading />}
-			<div className={styles.thumbnails}>
+			{!loading && <div className={styles.thumbnails}>
 				{data.length > 0 &&
 					data.map(thumbnail => {
 						return (
@@ -50,7 +50,7 @@ export default function ThumbnailsClientSide({ data, category }) {
 							/>
 						)
 					})}
-			</div>
+			</div>}
 		</>
 	)
 }
