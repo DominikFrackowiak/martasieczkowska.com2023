@@ -44,6 +44,7 @@ export default function SingleThumbnail({
 				<div
 					className={styles.singleThumbnail__description}
 					dangerouslySetInnerHTML={{ __html: description }}
+					onClick={handleClick}
 				></div>
 				<Image
 					className={styles.singleThumbnail__image}
@@ -51,6 +52,7 @@ export default function SingleThumbnail({
 					alt={slug}
 					width={694}
 					height={578}
+					onClick={handleClick}
 				/>
 			</div>
 		</>
