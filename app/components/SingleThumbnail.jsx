@@ -1,4 +1,4 @@
-'use client'
+import Link from 'next/link'
 
 import Image from 'next/image'
 import styles from './Thumbnails.module.scss'
@@ -6,20 +6,18 @@ import styles from './Thumbnails.module.scss'
 export default function SingleThumbnail({
 	thumbnail,
 	description,
-	
+	category,
 	slug,
-	handleClick
 }) {
 	return (
-		<div
+		<Link
+			href={category ? `/${slug}?category=${category}` : `/${slug}`}
 			key={thumbnail?.alt}
 			className={styles.singleThumbnail}
-			onClick={e => handleClick(e, slug)}
 		>
 			<div
 				className={styles.singleThumbnail__description}
 				dangerouslySetInnerHTML={{ __html: description }}
-				onClick={e => handleClick(e, slug)}
 			></div>
 			<Image
 				className={styles.singleThumbnail__image}
@@ -27,8 +25,7 @@ export default function SingleThumbnail({
 				alt={slug}
 				width={694}
 				height={578}
-				onClick={e => handleClick(e, slug)}
 			/>
-		</div>
+		</Link>
 	)
 }

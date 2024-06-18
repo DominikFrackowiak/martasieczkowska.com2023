@@ -1,14 +1,14 @@
 import getThumbnailsByCategory from '../../lib/getThumbnailsByCategory'
 import getAllThumbnails from '../../lib/getAllThumbnails'
 
-import ThumbnailsClientSide from './ThumbnailsClientSide'
+import SingleThumbnail from './SingleThumbnail'
+
+import styles from './Thumbnails.module.scss'
 
 export const revalidate = 3600
 
 export default async function Thumbnails({ category }) {
 	function handleLoadingInfo() {}
-
-	console.log(category)
 
 	let data
 
@@ -22,7 +22,20 @@ export default async function Thumbnails({ category }) {
 
 	return (
 		<div className='responsiveWrapper'>
-			<ThumbnailsClientSide data={data} />
+			<div className={styles.thumbnails}>
+				{data.length > 0 &&
+					data.map(thumbnail => {
+						return (
+							<SingleThumbnail
+								key={thumbnail?.thumbnail?.id}
+								thumbnail={thumbnail?.thumbnail?.link}
+								description={thumbnail?.thumbnailDescription}
+								slug={thumbnail?.slug}
+								category={category}
+							/>
+						)
+					})}
+			</div>
 		</div>
 	)
 }
