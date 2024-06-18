@@ -26,7 +26,7 @@ export async function generateMetadata({ params }) {
 	}
 }
 
-export const revalidate = 60
+export const revalidate = 3600
 
 export default async function SinglePage({ params, searchParams }) {
 	const { heading, description, images } = await handleDataToDisplayInGallery(
@@ -63,7 +63,6 @@ export default async function SinglePage({ params, searchParams }) {
 						gap: '20px',
 					}}
 				></div>
-				
 			</Suspense>
 			<Suspense fallback={<Loading />}>
 				<Thumbnails category={searchParams.category} />

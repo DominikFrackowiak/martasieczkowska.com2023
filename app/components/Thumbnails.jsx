@@ -1,11 +1,9 @@
-
-
 import getThumbnailsByCategory from '../../lib/getThumbnailsByCategory'
 import getAllThumbnails from '../../lib/getAllThumbnails'
 
 import ThumbnailsClientSide from './ThumbnailsClientSide'
 
-export const revalidate = 60
+export const revalidate = 3600
 
 export default async function Thumbnails({ category }) {
 	function handleLoadingInfo() {}
@@ -22,5 +20,9 @@ export default async function Thumbnails({ category }) {
 
 	data = data?.reverse()
 
-	return <div className='responsiveWrapper'><ThumbnailsClientSide data={data}/></div>
+	return (
+		<div className='responsiveWrapper'>
+			<ThumbnailsClientSide data={data} />
+		</div>
+	)
 }
