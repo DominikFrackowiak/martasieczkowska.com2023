@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 
 import { Roboto } from 'next/font/google'
 
@@ -9,21 +9,9 @@ const roboto = Roboto({
 	display: 'swap',
 })
 
-export default function NavLink({
-	category,
-	text,
-	queryKey,
-	queryValue,
-	styles,
-}) {
-	// const router = useRouter()
+export default function NavLink({ text, queryKey, queryValue, styles }) {
 	const searchParams = useSearchParams()
 	const isActive = searchParams.get(queryKey) === queryValue
-
-	// const handleClick = () => {
-	// 	router.push(isActive ? '/' : `/?${queryKey}=${queryValue}`)
-	// 	router.refresh()
-	// }
 
 	return (
 		<Link
@@ -32,7 +20,6 @@ export default function NavLink({
 		>
 			<button
 				className={roboto.className}
-				// onClick={handleClick}
 				style={{ fontWeight: isActive ? 'bold' : 'normal', ...styles }}
 			>
 				{text}
