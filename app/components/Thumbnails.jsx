@@ -8,8 +8,6 @@ import styles from './Thumbnails.module.scss'
 export const revalidate = 3600
 
 export default async function Thumbnails({ category }) {
-	function handleLoadingInfo() {}
-
 	let data
 
 	if (category === undefined) {
