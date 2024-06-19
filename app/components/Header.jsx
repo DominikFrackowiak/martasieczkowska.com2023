@@ -41,6 +41,7 @@ export default function Header() {
 							text={link.text}
 							queryKey={link.queryKey}
 							queryValue={link.queryValue}
+							slug={link?.slug}
 						/>
 					))}
 				</nav>
@@ -55,6 +56,7 @@ export default function Header() {
 								text={link.text}
 								queryKey={link.queryKey}
 								queryValue={link.queryValue}
+								slug={link?.slug}
 								styles={{
 									cursor: 'pointer',
 

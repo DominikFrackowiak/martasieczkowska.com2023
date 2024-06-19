@@ -12,10 +12,11 @@ const navLinks = [
 		queryValue: 'illustration',
 	},
 	{
-		category: 'about',
+		category: '',
 		text: 'about',
-		queryKey: 'about',
-		queryValue: 'true',
+		slug: 'about',
+		queryKey: '',
+		queryValue: '',
 	},
 ]
 

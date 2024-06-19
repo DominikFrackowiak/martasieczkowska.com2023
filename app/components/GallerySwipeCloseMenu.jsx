@@ -8,7 +8,7 @@ import SwipeLeft from './SwipeLeft'
 import styles from './PageSwipeCloseMenu.module.scss'
 
 export default function GallerySwipeCloseMenu({ images, index }) {
-	console.log(images, index)
+	// console.log(images, index)
 	return (
 		<div
 			className={styles.pageSwipeCloseMenuWrapper}

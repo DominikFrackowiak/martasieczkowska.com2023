@@ -11,7 +11,7 @@ export default function SingleThumbnail({
 }) {
 	return (
 		<Link
-			href={category ? `/${slug}?category=${category}` : `/${slug}`}
+			href={category ? `/works/${slug}?category=${category}` : `/works/${slug}`}
 			key={thumbnail?.alt}
 			className={styles.singleThumbnail}
 		>

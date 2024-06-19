@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
+import { useSearchParams, usePathname } from 'next/navigation'
 
 import { Roboto } from 'next/font/google'
 
@@ -9,16 +9,35 @@ const roboto = Roboto({
 	display: 'swap',
 })
 
-export default function NavLink({ text, queryKey, queryValue, styles }) {
+export default function NavLink({ text, queryKey, queryValue, slug, styles }) {
 	const searchParams = useSearchParams()
-	const isActive = searchParams.get(queryKey) === queryValue
+	const pathname = usePathname()
 
-	return (
-		<button
-			className={roboto.className}
-			style={{ fontWeight: isActive ? 'bold' : 'normal', ...styles }}
+	const isActive = searchParams.get(queryKey) === queryValue
+	const isAboutActive = pathname === '/about'
+
+	const contentToDisplay = !slug ? (
+		<Link
+			href={isActive ? '/' : `/?${queryKey}=${queryValue}`}
+			style={{ display: 'flex' }}
 		>
-			<Link href={isActive ? '/' : `/?${queryKey}=${queryValue}`}>{text}</Link>
-		</button>
+			<button
+				className={roboto.className}
+				style={{ fontWeight: isActive ? 'bold' : 'normal', ...styles }}
+			>
+				{text}
+			</button>
+		</Link>
+	) : (
+		<Link href={isAboutActive ? '/' : `/${slug}`} style={{ display: 'flex' }}>
+			<button
+				className={roboto.className}
+				style={{ fontWeight: isAboutActive ? 'bold' : 'normal', ...styles }}
+			>
+				{text}
+			</button>
+		</Link>
 	)
+
+	return contentToDisplay
 }

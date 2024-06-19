@@ -2,16 +2,16 @@ import { Suspense } from 'react'
 import { v4 as uuid } from 'uuid'
 import parse from 'html-react-parser'
 
-import getSlugsByCategory from '../../lib/getSlugsByCategory'
-import getAllSlugs from '../../lib/getAllSlugs'
-import handleDataToDisplayInGallery from '../../utils/handleDataToDisplayInGallery'
+import getSlugsByCategory from '../../../lib/getSlugsByCategory'
+import getAllSlugs from '../../../lib/getAllSlugs'
+import handleDataToDisplayInGallery from '../../../utils/handleDataToDisplayInGallery'
 
-import Gallery from '../components/Gallery'
-import Loading from '../loading'
+import Gallery from '../../components/Gallery'
+import Loading from '../../loading'
 
-import Thumbnails from '../components/Thumbnails'
-import ArrowUp from '../components/ArrowUp'
-import PageSwipeCloseMenu from '../components/PageSwipeCloseMenu'
+import Thumbnails from '../../components/Thumbnails'
+import ArrowUp from '../../components/ArrowUp'
+import PageSwipeCloseMenu from '../../components/PageSwipeCloseMenu'
 import { redirect } from 'next/navigation'
 
 export async function generateStaticParams() {
@@ -38,6 +38,11 @@ export default async function SinglePage({ params, searchParams }) {
 	let allSlugs
 	let data
 
+	let category = searchParams.category
+	let about = searchParams.about
+
+	console.log(about)
+
 	if (searchParams.category !== undefined) {
 		data = await getSlugsByCategory(searchParams.category)
 	} else {
@@ -57,12 +62,20 @@ export default async function SinglePage({ params, searchParams }) {
 					currentSlugIndex={currentSlugIndex}
 					allSlugs={allSlugs}
 				/>
+
 				<div
 					style={{
 						display: 'flex',
 						gap: '20px',
 					}}
-				></div>
+				>
+					<PageSwipeCloseMenu
+						currentSlugIndex={currentSlugIndex}
+						category={category}
+						allSlugs={allSlugs}
+						about={about}
+					/>
+				</div>
 			</Suspense>
 			<Suspense fallback={<Loading />}>
 				<Thumbnails category={searchParams.category} />
