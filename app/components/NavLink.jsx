@@ -14,16 +14,11 @@ export default function NavLink({ text, queryKey, queryValue, styles }) {
 	const isActive = searchParams.get(queryKey) === queryValue
 
 	return (
-		<Link
-			href={isActive ? '/' : `/?${queryKey}=${queryValue}`}
-			style={{ display: 'flex' }}
+		<button
+			className={roboto.className}
+			style={{ fontWeight: isActive ? 'bold' : 'normal', ...styles }}
 		>
-			<button
-				className={roboto.className}
-				style={{ fontWeight: isActive ? 'bold' : 'normal', ...styles }}
-			>
-				{text}
-			</button>
-		</Link>
+			<Link href={isActive ? '/' : `/?${queryKey}=${queryValue}`}>{text}</Link>
+		</button>
 	)
 }

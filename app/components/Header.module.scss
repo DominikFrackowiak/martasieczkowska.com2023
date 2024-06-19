@@ -17,7 +17,8 @@
 	width: 250px;
 	// font-family: 'roboto';
 	color: $black;
-	&:focus{
+
+	&:focus {
 		outline: none;
 	}
 
@@ -27,11 +28,8 @@
 		letter-spacing: 0.2px;
 		border: none;
 		background-color: transparent;
-
-	
 	}
 }
-
 
 .mobileHeader {
 	display: flex;
@@ -41,6 +39,9 @@
 	z-index: 300;
 	background-color: $white;
 	margin: 20px 0;
+	&:focus {
+		outline: none;
+	}
 
 	@media (min-width: 768px) {
 		display: none;
@@ -56,6 +57,10 @@
 	padding: 15px 0;
 	border-bottom: 1px solid $black;
 	cursor: pointer;
+
+	&:focus {
+		outline: none;
+	}
 }
 
 .mobileLogoContainer {
