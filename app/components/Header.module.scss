@@ -17,6 +17,9 @@
 	width: 250px;
 	// font-family: 'roboto';
 	color: $black;
+	&:focus{
+		outline: none;
+	}
 
 	button {
 		// font-family: 'roboto';
@@ -25,11 +28,10 @@
 		border: none;
 		background-color: transparent;
 
-		button:focus {
-			outline: none;
-		}
+	
 	}
 }
+
 
 .mobileHeader {
 	display: flex;
