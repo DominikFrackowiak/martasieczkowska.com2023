@@ -140,21 +140,23 @@ export default function Gallery({
 				</div>
 				// </motion.div>
 			)}
+
 			{clickedImageIndex >= 0 && windowWidth >= 768 && (
-				<>
+				<div className={styles.galleryWrapper}>
 					<ImagesCarousel
 						images={imagesURLS}
 						index={clickedImageIndex}
 						handleStateChange={handleStateChange}
 						imagesSizes={imagesSizes}
+						
 					/>
-					<GallerySwipeCloseMenu
+					{/* <GallerySwipeCloseMenu
 						images={imagesURLS}
 						index={clickedImageIndex}
 						handleSwipeRight={handleSwipeRight}
 						handleSwipeLeft={handleSwipeLeft}
-					/>
-				</>
+					/> */}
+				</div>
 			)}
 		</>
 	)

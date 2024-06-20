@@ -4,12 +4,12 @@ import styles from './PageSwipeCloseMenu.module.scss'
 
 export default function SwipeRight({ category, currentSlugIndex, allSlugs }) {
 	const swiper =
-		category !== undefined ? (
+		category !== null ? (
 			<Link
 				href={
 					currentSlugIndex < allSlugs?.length - 1
-						? `/${allSlugs[currentSlugIndex + 1]}?category=${category}`
-						: `/${allSlugs[0]}?category=${category}`
+						? `/works/${allSlugs[currentSlugIndex + 1]}?category=${category}`
+						: `/works/${allSlugs[0]}?category=${category}`
 				}
 			>
 				<FaAngleRight className={styles.arrowIcon} />
@@ -18,8 +18,8 @@ export default function SwipeRight({ category, currentSlugIndex, allSlugs }) {
 			<Link
 				href={
 					currentSlugIndex < allSlugs.length - 1
-						? `/${allSlugs[currentSlugIndex + 1]}`
-						: `/${allSlugs[0]}`
+						? `/works/${allSlugs[currentSlugIndex + 1]}`
+						: `/works/${allSlugs[0]}`
 				}
 			>
 				<FaAngleRight className={styles.arrowIcon} />

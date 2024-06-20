@@ -1,6 +1,7 @@
 import Image from 'next/image'
 
 import getAboutPage from '../../lib/getAboutPage'
+import handleParagraphToRender from '../../utils/handleParagraphToRender'
 
 import AboutExperience from '../components/AboutExperience'
 import PageSwipeCloseMenu from '../components/PageSwipeCloseMenu'
@@ -15,9 +16,9 @@ export default async function About() {
 
 	const contentToDisplay = data.data.map((el, index) => {
 		if (el.name === 'core/paragraph' && index !== 1) {
-			return <p key={uuidv4()}>{el.attributes.content}</p>
+			return handleParagraphToRender(el.attributes.content)
 		} else if (el.name === 'core/paragraph' && index === 1) {
-			return <AboutExperience key={uuidv4()}/>
+			return <AboutExperience key={uuidv4()} />
 		} else if (el.name === 'core/image') {
 			return (
 				<Image
@@ -35,21 +36,20 @@ export default async function About() {
 	})
 
 	return (
-		<div className='wrapper' style={{border: '1px solid red'}}>
+		<div className='responsiveWrapper'>
 			<main
-				// style={{
-				// 	display: 'flex',
-				// 	flexDirection: 'column',
-				// 	gap: '15px',
-				// 	maxWidth: '550px',
-				// 	marginTop: '40px',
-				// }}
+				style={{
+					display: 'flex',
+					flexDirection: 'column',
+					gap: '15px',
+					maxWidth: '550px',
+				}}
 			>
 				<h1>{data.title}</h1>
 				{contentToDisplay}
-				<PageSwipeCloseMenu about={true} />
 			</main>
-			<Thumbnails/>
+			<PageSwipeCloseMenu about={true} />
+			<Thumbnails />
 		</div>
 	)
 }
