@@ -22,8 +22,8 @@ export default function Header() {
 	const [showMenu, setShowMenu] = useState(false)
 
 	return (
-		<header className='responsiveWrapper'>
-			<div className={styles.headerDesktop}>
+		<>
+			<header className={styles.headerDesktop}>
 				<Link href='/'>
 					<Image
 						src={'/assets/logo_marta_big.svg'}
@@ -45,8 +45,8 @@ export default function Header() {
 						/>
 					))}
 				</nav>
-			</div>
-			<div className={styles.mobileHeader}>
+			</header>
+			<header className={styles.mobileHeader}>
 				{showMenu && (
 					<nav className={styles.mobileNavigationMenu}>
 						{navLinks.map((link, index) => (
@@ -90,7 +90,7 @@ export default function Header() {
 						/>
 					</Link>
 				</div>
-			</div>
-		</header>
+			</header>
+		</>
 	)
 }

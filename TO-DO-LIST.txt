@@ -6,12 +6,12 @@ c. handle html from fetched data: image caption
 2. GALLERY : hiding/showing some pictures,
             handle html to get alt for the images 
 
-3. GALLERY: FULL IMAGE SWIPE
 
-4. HEADINGS 
 
-5. REFACTORING: all elements with the class "wrapper" could be a layout component
+3. HEADINGS - CHANGES IN WORDPRESS and IN FETCHING
 
-6. SEO
+
+
+4. SEO
 
             

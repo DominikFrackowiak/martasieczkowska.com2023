@@ -53,7 +53,7 @@ export default async function SinglePage({ params, searchParams }) {
 	const currentSlugIndex = allSlugs.reverse().indexOf(params.slug)
 
 	const contentToDisplay = (
-		<div className='responsiveWrapper'>
+		<>
 			<Suspense fallback={<Loading />}>
 				<Gallery
 					images={images}
@@ -73,7 +73,7 @@ export default async function SinglePage({ params, searchParams }) {
 			<Suspense fallback={<Loading />}>
 				<Thumbnails category={searchParams.category} />
 			</Suspense>
-		</div>
+		</>
 	)
 
 	return contentToDisplay

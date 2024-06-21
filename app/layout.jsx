@@ -5,9 +5,8 @@ import './globals.scss'
 import { Suspense } from 'react'
 
 import Header from './components/Header'
-import Thumbnails from './components/Thumbnails'
-
 import Footer from './components/Footer'
+import ResponsiveWrapper from './components/ResponsiveWrapper'
 
 const SourceSerif = Source_Serif_4({ subsets: ['latin'] })
 
@@ -19,15 +18,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang='en'>
-			{/* <body className={inter.className}> */}
 			<body className={SourceSerif.className}>
-				<Suspense fallback={<p>Loading ...</p>}>
-					<Header />
-				</Suspense>
-				{children}
-				<Suspense fallback={<p>Loading ...</p>}>
-					<Footer />
-				</Suspense>
+				<ResponsiveWrapper>
+					<Suspense fallback={<p>Loading ...</p>}>
+						<Header />
+					</Suspense>
+					{children}
+					<Suspense fallback={<p>Loading ...</p>}>
+						<Footer />
+					</Suspense>
+				</ResponsiveWrapper>
 			</body>
 		</html>
 	)

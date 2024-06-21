@@ -36,7 +36,7 @@ export default async function About() {
 	})
 
 	return (
-		<div className='responsiveWrapper'>
+		<>
 			<main
 				style={{
 					display: 'flex',
@@ -50,6 +50,6 @@ export default async function About() {
 			</main>
 			<PageSwipeCloseMenu about={true} />
 			<Thumbnails />
-		</div>
+		</>
 	)
 }
