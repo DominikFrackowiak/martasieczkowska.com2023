@@ -12,21 +12,16 @@ export const ImagesCarousel = ({
 	return (
 		<Carousel.Root
 			align='center'
-			loop={true}
 			slidesPerView={1}
-			spacing='16px'
 			orientation='horizontal'
 			style={{
 				position: 'relative',
 				top: '50%',
 				left: '50%',
 				transform: 'translate(-50%, 0)',
-				// backgroundColor: 'rgb(255, 255, 255)',
+
 				zIndex: '100000',
 				paddingBottom: '80px',
-				// display: 'flex',
-				// justifyContent: 'center',
-				// alignItems: 'center',
 			}}
 			className={styles.carouselWrapper}
 			onClick={handleStateChange}
@@ -34,7 +29,6 @@ export const ImagesCarousel = ({
 			<Carousel.Viewport>
 				<Carousel.ItemGroup>
 					<Carousel.Item key={index} index={index}>
-						{/* <div className={styles.imageWrapper}> */}
 						<Image
 							src={images[index]}
 							alt={`Slide ${index}`}
@@ -43,7 +37,6 @@ export const ImagesCarousel = ({
 							quality={90}
 							className={styles.fullImage}
 						/>
-						{/* </div> */}
 					</Carousel.Item>
 				</Carousel.ItemGroup>
 			</Carousel.Viewport>

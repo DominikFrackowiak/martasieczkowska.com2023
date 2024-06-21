@@ -35,11 +35,11 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 		}
 	}, [])
 
-	useEffect(() => {
-		if (windowWidth < 768) {
-			setClickedImageIndex(-1)
-		}
-	}, [windowWidth])
+	// useEffect(() => {
+	// 	if (windowWidth < 768) {
+	// 		setClickedImageIndex(-1)
+	// 	}
+	// }, [windowWidth])
 
 	const scrollToTop = () => {
 		window.scrollTo({
@@ -123,7 +123,7 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 				</div>
 			)}
 
-			{clickedImageIndex >= 0 && windowWidth >= 768 && (
+			{clickedImageIndex >= 0  && (
 				<div className={styles.galleryWrapper}>
 					<ImagesCarousel
 						images={imagesURLS}
@@ -133,8 +133,9 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 					/>
 				</div>
 			)}
+
+			
+		
 		</>
 	)
 }
-
-

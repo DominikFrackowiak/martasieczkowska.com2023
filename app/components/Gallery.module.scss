@@ -95,7 +95,7 @@
 	width: 320px;
 	height: auto;
 	transition: opacity 0.5s;
-	cursor: pointer;
+	
 }
 
 .galeryImage.active {
@@ -105,12 +105,14 @@
 @media (min-width: 577px) {
 	.galleryImage {
 		width: 576px;
+		
 	}
 }
 
 @media (min-width: 992px) {
 	.galleryImage {
 		width: 668px;
+		cursor: pointer;
 	}
 }
 
