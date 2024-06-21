@@ -9,6 +9,8 @@ import Thumbnails from '../components/Thumbnails'
 
 import { v4 as uuidv4 } from 'uuid'
 
+import styles from './AboutPage.module.scss'
+
 export default async function About() {
 	const data = await getAboutPage()
 
@@ -29,6 +31,7 @@ export default async function About() {
 					quality={70}
 					style={{ display: 'block' }}
 					key={uuidv4()}
+					className={styles.portrait}
 				/>
 				// {img.caption ? <small>{img.caption}</small> : null}
 			)
@@ -37,14 +40,7 @@ export default async function About() {
 
 	return (
 		<>
-			<main
-				style={{
-					display: 'flex',
-					flexDirection: 'column',
-					gap: '15px',
-					maxWidth: '550px',
-				}}
-			>
+			<main className={styles.main}>
 				<h1>{data.title}</h1>
 				{contentToDisplay}
 			</main>

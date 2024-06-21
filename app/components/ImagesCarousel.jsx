@@ -17,16 +17,16 @@ export const ImagesCarousel = ({
 			spacing='16px'
 			orientation='horizontal'
 			style={{
-				// position: 'absolute',
-				// top: '50%',
-				// left: '50%',
-				// transform: 'translate(-50%, -50%)',
-				// backgroundColor: 'rgba(255, 255, 255, .9',
+				position: 'relative',
+				top: '50%',
+				left: '50%',
+				transform: 'translate(-50%, 0)',
+				// backgroundColor: 'rgb(255, 255, 255)',
 				zIndex: '100000',
-
-				display: 'flex',
-				justifyContent: 'center',
-				alignItems: 'center',
+				paddingBottom: '80px',
+				// display: 'flex',
+				// justifyContent: 'center',
+				// alignItems: 'center',
 			}}
 			className={styles.carouselWrapper}
 			onClick={handleStateChange}

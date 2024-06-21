@@ -71,7 +71,10 @@ export default async function SinglePage({ params, searchParams }) {
 				/>
 			</Suspense>
 			<Suspense fallback={<Loading />}>
-				<Thumbnails category={searchParams.category} />
+				<Thumbnails
+					category={searchParams.category}
+					isFullImageDisplayed={searchParams?.imageIndex}
+				/>
 			</Suspense>
 		</>
 	)

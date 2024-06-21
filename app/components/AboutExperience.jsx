@@ -7,7 +7,7 @@ const texts = [
 	{ left: 'infographics', right: 'to' },
 ]
 
-import styles from './About.module.scss'
+import styles from './AboutExperience.module.scss'
 
 export default function AboutExperience() {
   return (

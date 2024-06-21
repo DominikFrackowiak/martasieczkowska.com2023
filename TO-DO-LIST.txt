@@ -1,17 +1,10 @@
 1. ABOUT - 
-a. responsiveness (image too wide on mobile)
-b. spacing (GAP) 
-c. handle html from fetched data: image caption
-
-2. GALLERY : hiding/showing some pictures,
-            handle html to get alt for the images 
 
 
+b. handle html from fetched data: image caption
 
+2. GALLERY : handle html to get alt for the images 
 3. HEADINGS - CHANGES IN WORDPRESS and IN FETCHING
-
-
-
 4. SEO
 
             
