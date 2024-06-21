@@ -2,12 +2,11 @@
 
 
 import { useSearchParams } from 'next/navigation'
-import { useState, useEffect } from 'react'
+
 import Image from 'next/image'
 import Link from 'next/link'
 
-import getSlugsByCategory from '../../lib/getSlugsByCategory'
-import getAllSlugs from '../../lib/getAllSlugs'
+
 
 import SwipeRight from './SwipeRight'
 import SwipeLeft from './SwipeLeft'

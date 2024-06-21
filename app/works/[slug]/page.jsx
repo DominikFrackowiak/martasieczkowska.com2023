@@ -41,7 +41,7 @@ export default async function SinglePage({ params, searchParams }) {
 	let category = searchParams.category
 	let about = searchParams.about
 
-	console.log(data, allSlugs)
+	// console.log(data, allSlugs)
 
 	if (searchParams.category !== undefined) {
 		data = await getSlugsByCategory(searchParams.category)
@@ -51,11 +51,11 @@ export default async function SinglePage({ params, searchParams }) {
 		allSlugs = data.map(el => el.slug)
 	}
 
-	// allSlugs = data.map(el => el.slug)
+	allSlugs = data.map(el => el.slug)
 
-	const currentSlugIndex = allSlugs.indexOf(params.slug)
+	const currentSlugIndex = allSlugs.reverse().indexOf(params.slug)
 
-	// console.log(category)
+	console.log(allSlugs)
 
 	const contentToDisplay = (
 		<div className='responsiveWrapper'>

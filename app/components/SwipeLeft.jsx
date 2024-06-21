@@ -8,8 +8,8 @@ export default function SwipeLeft({ category, currentSlugIndex, allSlugs }) {
 			<Link
 				href={
 					currentSlugIndex > 0
-						? `/works/${allSlugs[currentSlugIndex + 1]}?category=${category}`
-						: `/works/${allSlugs[allSlugs.length + 1]}?category=${category}`
+						? `/works/${allSlugs[currentSlugIndex - 1]}?category=${category}`
+						: `/works/${allSlugs[allSlugs.length - 1]}?category=${category}`
 				}
 			>
 				<FaAngleLeft className={styles.arrowIcon} />
