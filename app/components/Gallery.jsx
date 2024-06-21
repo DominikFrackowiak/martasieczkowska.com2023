@@ -107,7 +107,8 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 										quality={70}
 										onClick={() => {
 											scrollToTop()
-											if (windowWidth >= 768) setClickedImageIndex(index)
+											// if (windowWidth >= 768) setClickedImageIndex(index)
+											setClickedImageIndex(index)
 										}}
 										style={{ display: 'block' }}
 									/>
@@ -123,7 +124,7 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 				</div>
 			)}
 
-			{clickedImageIndex >= 0  && (
+			{clickedImageIndex >= 0 && (
 				<div className={styles.galleryWrapper}>
 					<ImagesCarousel
 						images={imagesURLS}
@@ -133,9 +134,6 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 					/>
 				</div>
 			)}
-
-			
-		
 		</>
 	)
 }
