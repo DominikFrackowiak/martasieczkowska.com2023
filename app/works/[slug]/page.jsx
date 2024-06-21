@@ -1,6 +1,5 @@
 import { Suspense } from 'react'
 import { v4 as uuid } from 'uuid'
-import parse from 'html-react-parser'
 
 import getSlugsByCategory from '../../../lib/getSlugsByCategory'
 import getAllSlugs from '../../../lib/getAllSlugs'
@@ -10,7 +9,7 @@ import Gallery from '../../components/Gallery'
 import Loading from '../../loading'
 
 import Thumbnails from '../../components/Thumbnails'
-import ArrowUp from '../../components/ArrowUp'
+
 import PageSwipeCloseMenu from '../../components/PageSwipeCloseMenu'
 import { redirect } from 'next/navigation'
 
@@ -41,8 +40,6 @@ export default async function SinglePage({ params, searchParams }) {
 	let category = searchParams.category
 	let about = searchParams.about
 
-	// console.log(data, allSlugs)
-
 	if (searchParams.category !== undefined) {
 		data = await getSlugsByCategory(searchParams.category)
 		allSlugs = data.map(el => el.slug)
@@ -55,8 +52,6 @@ export default async function SinglePage({ params, searchParams }) {
 
 	const currentSlugIndex = allSlugs.reverse().indexOf(params.slug)
 
-	console.log(allSlugs)
-
 	const contentToDisplay = (
 		<div className='responsiveWrapper'>
 			<Suspense fallback={<Loading />}>
@@ -68,19 +63,12 @@ export default async function SinglePage({ params, searchParams }) {
 					allSlugs={allSlugs}
 				/>
 
-				<div
-					style={{
-						display: 'flex',
-						gap: '20px',
-					}}
-				>
-					<PageSwipeCloseMenu
-						currentSlugIndex={currentSlugIndex}
-						category={category}
-						allSlugs={allSlugs}
-						about={about}
-					/>
-				</div>
+				<PageSwipeCloseMenu
+					currentSlugIndex={currentSlugIndex}
+					category={category}
+					allSlugs={allSlugs}
+					about={about}
+				/>
 			</Suspense>
 			<Suspense fallback={<Loading />}>
 				<Thumbnails category={searchParams.category} />

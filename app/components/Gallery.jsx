@@ -1,23 +1,23 @@
 'use client'
-// import Image from 'next/image'
+
 import { CldImage } from 'next-cloudinary'
 import { useEffect, useRef, useState } from 'react'
 import styles from './Gallery.module.scss'
-import { motion } from 'framer-motion'
+
 import { ImagesCarousel } from '../components/ImagesCarousel'
 import ArrowUp from './ArrowUp'
-import GallerySwipeCloseMenu from './GallerySwipeCloseMenu'
 
-export default function Gallery({
-	images,
-	headingInnerText,
-	postInnerText,
-	currentSlugIndex,
-	allSlugs,
-}) {
+import { useRouter, usePathname, useSearchParams } from 'next/navigation'
+
+export default function Gallery({ images, headingInnerText, postInnerText }) {
 	const imageRefs = useRef([])
+	const router = useRouter()
+	const path = usePathname()
 	const imagesURLS = images?.map(image => image.attributes.url)
 	const [windowWidth, setWindowWidth] = useState('')
+	const searchParams = useSearchParams()
+
+	const bigImageIndex = searchParams.get('imageIndex')
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -30,7 +30,6 @@ export default function Gallery({
 
 		window.addEventListener('resize', handleResize)
 
-		// Clean up the event listener on component unmount
 		return () => {
 			window.removeEventListener('resize', handleResize)
 		}
@@ -55,42 +54,32 @@ export default function Gallery({
 	}))
 
 	const [clickedImageIndex, setClickedImageIndex] = useState(-1)
-	// useEffect(() => {
-	// 	imageRefs.current = imageRefs.current.slice(0, images.length)
-	// }, [images])
 
-	// useEffect(() => {
-	// 	imageRefs.current.forEach(ref => {
-	// 		if (ref) {
-	// 			if (ref.clientHeight < 50) {
-	// 				ref.classList.add('displayNone')
-	// 			} else {
-	// 				ref.classList.remove('displayNone')
-	// 			}
-	// 		}
-	// 	})
-	// }, [images])
-
-	// console.log(images)
-
-	function handleSwipeRight() {}
-
-	function handleSwipeLeft() {}
+	useEffect(() => {
+		if (clickedImageIndex >= 0) {
+			router.push(`${path}?imageIndex=${clickedImageIndex}`)
+		} else {
+			router.push(`${path}`)
+		}
+	}, [clickedImageIndex])
 
 	function handleStateChange() {
+		if (bigImageIndex) {
+			scrollToImage(bigImageIndex)
+		}
+
 		setClickedImageIndex(-1)
+	}
+
+	const scrollToImage = index => {
+		setTimeout(() => {
+			imageRefs.current[index]?.scrollIntoView({ behavior: 'smooth' })
+		}, 500)
 	}
 
 	return (
 		<>
 			{clickedImageIndex === -1 && (
-				// <motion.div
-				// 	initial={{ opacity: 0, x: '-100vw' }}
-				// 	animate={{ opacity: 1, x: 0 }}
-				// 	exit={{ opacity: 0, x: '100vw' }}
-				// 	className={styles.galleryWrapper}
-				// 	transition={{ delay: 0.5 }}
-				// >
 				<div className={styles.galleryWrapper}>
 					<div
 						className={`${styles.galleryHeader} ${styles.galleryHeaderUpToLarge}`}
@@ -102,7 +91,10 @@ export default function Gallery({
 						{images?.map((img, index) => (
 							<section
 								key={img.attributes.id}
-								ref={el => (imageRefs.current[index] = el)}
+								ref={el => {
+									console.log(`Assigning ref for index ${index}: `, el)
+									imageRefs.current[index] = el
+								}}
 								className={img.attributes.className}
 							>
 								<div style={{ display: 'flex' }}>
@@ -113,7 +105,6 @@ export default function Gallery({
 										height={img.attributes.height}
 										className={styles.galleryImage}
 										quality={70}
-										// sizes='(max-width: 575px) 320px, (max-width: 991px) 576px, (max-width: 1199px) 668px, 724px'
 										onClick={() => {
 											scrollToTop()
 											if (windowWidth >= 768) setClickedImageIndex(index)
@@ -121,15 +112,7 @@ export default function Gallery({
 										style={{ display: 'block' }}
 									/>
 									{img.caption ? <small>{img.caption}</small> : null}
-									{/* {index === 0 && (
-									<div
-										className={`${styles.galleryHeader} ${styles.galleryHeaderXLarge}`}
-									>
-										<h1>{headingInnerText}</h1>
-										<p>{postInnerText}</p>
-										<ArrowUp smallerDevices={false} />
-									</div>
-								)} */}
+
 									<ArrowUp smallerDevices={false} />
 								</div>
 							</section>
@@ -138,7 +121,6 @@ export default function Gallery({
 						<ArrowUp smallerDevices={true} />
 					</div>
 				</div>
-				// </motion.div>
 			)}
 
 			{clickedImageIndex >= 0 && windowWidth >= 768 && (
@@ -148,16 +130,11 @@ export default function Gallery({
 						index={clickedImageIndex}
 						handleStateChange={handleStateChange}
 						imagesSizes={imagesSizes}
-						
 					/>
-					{/* <GallerySwipeCloseMenu
-						images={imagesURLS}
-						index={clickedImageIndex}
-						handleSwipeRight={handleSwipeRight}
-						handleSwipeLeft={handleSwipeLeft}
-					/> */}
 				</div>
 			)}
 		</>
 	)
 }
+
+

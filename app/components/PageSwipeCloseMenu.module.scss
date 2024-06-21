@@ -6,6 +6,7 @@
 	justify-content: center;
 	align-items: center;
 	gap: $xs;
+	margin: 20px 0;
 
 	@media (min-width: 576px) {
 		gap: $s;

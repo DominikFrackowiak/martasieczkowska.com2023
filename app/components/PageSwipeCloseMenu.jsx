@@ -21,10 +21,13 @@ export default function PageSwipeCloseMenu({
 	const searchParams = useSearchParams()
 
 	const category = searchParams.get('category')
+	const imageIndexQuery = searchParams.get('imageIndex')
 
-	return (
-		<div className={styles.pageSwipeCloseMenuWrapper}>
-			{about !== true && (
+	
+
+
+		const contentToDisplay =  imageIndexQuery===null ? (<div className={styles.pageSwipeCloseMenuWrapper}>
+			{about !== true &&  (
 				<SwipeLeft
 					category={category}
 					currentSlugIndex={currentSlugIndex}
@@ -39,13 +42,15 @@ export default function PageSwipeCloseMenu({
 					alt='icon back to main'
 				/>
 			</Link>
-			{about !== true && (
+			{about !== true &&  (
 				<SwipeRight
 					category={category}
 					currentSlugIndex={currentSlugIndex}
 					allSlugs={allSlugs}
 				/>
 			)}
-		</div>
-	)
+		</div>) : null
+
+		return contentToDisplay
+	
 }
