@@ -4,7 +4,7 @@ import getAboutPage from '../../lib/getAboutPage'
 import handleParagraphToRender from '../../utils/handleParagraphToRender'
 
 import AboutExperience from '../components/AboutExperience'
-import PageSwipeCloseMenu from '../components/PageSwipeCloseMenu'
+import PageCloseMenu from '../components/PageCloseMenu'
 import Thumbnails from '../components/Thumbnails'
 
 import { v4 as uuidv4 } from 'uuid'
@@ -44,7 +44,7 @@ export default async function About() {
 				<h1>{data.title}</h1>
 				{contentToDisplay}
 			</main>
-			<PageSwipeCloseMenu about={true} />
+			<PageCloseMenu />
 			<Thumbnails />
 		</>
 	)

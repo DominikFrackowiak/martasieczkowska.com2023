@@ -14,32 +14,10 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 	const router = useRouter()
 	const path = usePathname()
 	const imagesURLS = images?.map(image => image.attributes.url)
-	const [windowWidth, setWindowWidth] = useState('')
+
 	const searchParams = useSearchParams()
 
 	const bigImageIndex = searchParams.get('imageIndex')
-
-	useEffect(() => {
-		setTimeout(() => {
-			setWindowWidth(window.innerWidth)
-		}, 500)
-
-		const handleResize = () => {
-			setWindowWidth(window.innerWidth)
-		}
-
-		window.addEventListener('resize', handleResize)
-
-		return () => {
-			window.removeEventListener('resize', handleResize)
-		}
-	}, [])
-
-	// useEffect(() => {
-	// 	if (windowWidth < 768) {
-	// 		setClickedImageIndex(-1)
-	// 	}
-	// }, [windowWidth])
 
 	const scrollToTop = () => {
 		window.scrollTo({
@@ -107,7 +85,6 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 										quality={70}
 										onClick={() => {
 											scrollToTop()
-											// if (windowWidth >= 768) setClickedImageIndex(index)
 											setClickedImageIndex(index)
 										}}
 										style={{ display: 'block' }}
