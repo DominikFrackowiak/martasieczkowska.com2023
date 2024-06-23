@@ -70,7 +70,6 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 							<section
 								key={img.attributes.id}
 								ref={el => {
-									console.log(`Assigning ref for index ${index}: `, el)
 									imageRefs.current[index] = el
 								}}
 								className={img.attributes.className}
@@ -78,10 +77,10 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 								<div style={{ display: 'flex' }}>
 									<CldImage
 										src={img.attributes.url}
-										alt={img.htmlContent}
+										alt={img.alt}
 										width={img.attributes.width}
 										height={img.attributes.height}
-										className={styles.galleryImage}
+										className={`${styles.galleryImage} ${img.attributes.className}`}
 										quality={70}
 										onClick={() => {
 											scrollToTop()

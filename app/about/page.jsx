@@ -17,8 +17,6 @@ import styles from './AboutPage.module.scss'
 export default async function About() {
 	const data = await getAboutPage()
 
-	// console.log(data)
-
 	const contentToDisplay = data.data.map((el, index) => {
 		if (el.name === 'core/paragraph' && index !== 1) {
 			return handleParagraphToRender(el.attributes.content)
@@ -35,10 +33,11 @@ export default async function About() {
 						height={el.attributes.height}
 						quality={70}
 						style={{ display: 'block' }}
-						
 						className={styles.portrait}
 					/>
-					 {imageCaption ? <small className={styles.portraitCaption}>{imageCaption}</small> : null}
+					{imageCaption ? (
+						<small className={styles.portraitCaption}>{imageCaption}</small>
+					) : null}
 				</div>
 			)
 		}

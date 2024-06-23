@@ -1,9 +1,7 @@
-1. ABOUT - 
-b. handle html from fetched data: image caption
-2. GALLERY : handle html to get ALT for the images 
-3. HEADINGS - CHANGES IN WORDPRESS and IN FETCHING
-4. SEO
-5. REFACTORING => SOLID
-6. RESPONSIVE >=280px
+1.  SEO
+2. HEADINGS - CHANGES IN WORDPRESS and IN FETCHING
+4. RESPONSIVE >=280px
+4. REFACTORING => SOLID
+
 
             

@@ -33,7 +33,7 @@ a {
 }
 
 a:hover {
-	color: #7a7a7a;
+	color: #161515a6;
 }
 
 button {
@@ -58,14 +58,39 @@ button {
 	margin: 0 auto;
 	gap: $xs;
 
+	*.notDisplayOnMobile {
+		display: none;
+	}
+
+	*.notDisplayOnDesktop{
+   display: block;
+	}
+
+	.ganna-glass-white, .lasek-logo-full {
+		width: 150px;
+		align-self: center;
+	}
+
 	@media (min-width: 576px) {
 		width: 576px;
 		gap: $s;
+
+		.ganna-glass-white, .lasek-logo-full {
+		width: 200px;
+		align-self: center;
+	}
 	}
 
 	@media (min-width: 768px) {
 		width: 768px;
 		gap: $m;
+		*.notDisplayOnMobile {
+			display: block;
+		}
+
+		*.notDisplayOnDesktop{
+			display: none;
+		}
 	}
 
 	@media (min-width: 992px) {
