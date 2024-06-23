@@ -1,11 +1,11 @@
 @import '../spacing';
 
 .main {
- display: flex;
- flex-direction: column;
- max-width: 550px;
+	display: flex;
+	flex-direction: column;
+	max-width: 550px;
 	gap: $xs;
- line-height: 1.6;
+	line-height: 1.6;
 
 	@media (min-width: 576px) {
 		gap: $s;
@@ -24,19 +24,23 @@
 	}
 }
 
-.portraitWrapper{
-  display: flex;
-		flex-direction: column;
+.portraitWrapper {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap: 5px;
+
+	@media (min-width: 576px) {
 		width: 270px;
-		gap: 5px;
+	}
 }
 
 .portrait {
-	width: 270px;
+	width: 100%;
 	height: auto;
 }
 
-.portraitCaption{
+.portraitCaption {
 	align-self: flex-end;
 	font-size: 12px;
 }
