@@ -27,7 +27,7 @@ export default async function About() {
 		} else if (el.name === 'core/image') {
 			const imageCaption = extractFigcaptionFromHtmlContent(el.htmlContent)
 			return (
-				<div className={styles.portraitWrapper}>
+				<div className={styles.portraitWrapper} key={uuidv4()}>
 					<Image
 						src={el.attributes.url}
 						alt={extractAltFromHtmlContent(el.htmlContent)}
@@ -35,7 +35,7 @@ export default async function About() {
 						height={el.attributes.height}
 						quality={70}
 						style={{ display: 'block' }}
-						key={uuidv4()}
+						
 						className={styles.portrait}
 					/>
 					 {imageCaption ? <small className={styles.portraitCaption}>{imageCaption}</small> : null}
