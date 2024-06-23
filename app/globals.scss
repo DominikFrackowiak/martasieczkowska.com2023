@@ -62,23 +62,25 @@ button {
 		display: none;
 	}
 
-	*.notDisplayOnDesktop{
-   display: block;
+	*.notDisplayOnDesktop {
+		display: block;
 	}
 
-	.ganna-glass-white, .lasek-logo-full {
+	.ganna-glass-white,
+	.lasek-logo-full {
 		width: 150px;
 		align-self: center;
+		padding: 20px 0;
 	}
 
 	@media (min-width: 576px) {
 		width: 576px;
 		gap: $s;
 
-		.ganna-glass-white, .lasek-logo-full {
-		width: 200px;
-		align-self: center;
-	}
+		.ganna-glass-white,
+		.lasek-logo-full {
+			width: 200px;
+		}
 	}
 
 	@media (min-width: 768px) {
@@ -88,7 +90,7 @@ button {
 			display: block;
 		}
 
-		*.notDisplayOnDesktop{
+		*.notDisplayOnDesktop {
 			display: none;
 		}
 	}
