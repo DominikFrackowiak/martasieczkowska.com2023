@@ -39,7 +39,7 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 		} else {
 			router.push(`${path}`)
 		}
-	}, [clickedImageIndex])
+	}, [clickedImageIndex, path, router])
 
 	function handleStateChange() {
 		if (bigImageIndex) {
