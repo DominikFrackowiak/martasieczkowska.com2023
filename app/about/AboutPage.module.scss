@@ -24,6 +24,19 @@
 	}
 }
 
+.portraitWrapper{
+  display: flex;
+		flex-direction: column;
+		width: 270px;
+		gap: 5px;
+}
+
 .portrait {
-	width: 320px;
+	width: 270px;
+	height: auto;
+}
+
+.portraitCaption{
+	align-self: flex-end;
+	font-size: 12px;
 }

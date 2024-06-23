@@ -1,11 +1,5 @@
 import getPost from '../lib/getPost'
-
-
-function extractAlt(htmlContent) {
-	const regex = /alt="([^"]*)"/
-	const match = htmlContent.match(regex)
-	return match ? match[1] : null
-}
+import extractAltFromHtmlContent from './extractAltFromHtmlContent'
 
 export const revalidate = 60
 
@@ -19,7 +13,7 @@ export default async function handleDataToDisplayInGallery(params) {
 	)
 	const images = imageBlocks?.map(block => ({
 		attributes: block.attributes,
-		htmlContent: extractAlt(block.htmlContent),
+		htmlContent: extractAltFromHtmlContent(block.htmlContent),
 	}))
 
 	return { heading, description, images }
