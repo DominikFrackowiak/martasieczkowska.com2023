@@ -4,7 +4,7 @@ import { v4 as uuid } from 'uuid'
 import getSlugsByCategory from '../../../lib/getSlugsByCategory'
 import getAllSlugs from '../../../lib/getAllSlugs'
 import handleDataToDisplayInGallery from '../../../utils/handleDataToDisplayInGallery'
-import getMetadataForAllPosts from '../../../lib/getMetadataForAllPosts'
+import getMetadata from '../../../lib/getMetadata'
 
 import Gallery from '../../components/Gallery'
 import Loading from '../../loading'
@@ -20,7 +20,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-	const metadata = await getMetadataForAllPosts(params.slug)
+	const metadata = await getMetadata(params.slug)
 	return metadata
 }
 
