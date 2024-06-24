@@ -20,7 +20,7 @@ export default async function handleDataToDisplayInGallery(params) {
 		classes: block.attributes.className,
 	}))
 
-	console.log(heading, description, images[1])
+	// console.log(heading, description, images[1])
 
 	return { heading, description, images }
 }
