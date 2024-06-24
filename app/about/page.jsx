@@ -14,6 +14,12 @@ import { v4 as uuidv4 } from 'uuid'
 
 import styles from './AboutPage.module.scss'
 
+export const metadata = {
+	title: 'Marta Sieczkowska | About',
+	description:
+		'Marta Sieczkowska - graphic designer and illustrator. Specialized in editorial design, typography, educational illustration, illustration for children, press illustration, infographics, branding.',
+}
+
 export default async function About() {
 	const data = await getAboutPage()
 
