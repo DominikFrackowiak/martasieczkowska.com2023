@@ -21,39 +21,39 @@ export const metadata = {
 }
 
 export default async function About() {
-	const data = await getAboutPage()
+	// const data = await getAboutPage()
 
-	const contentToDisplay = data.data.map((el, index) => {
-		if (el.name === 'core/paragraph' && index !== 1) {
-			return handleParagraphToRender(el.attributes.content)
-		} else if (el.name === 'core/paragraph' && index === 1) {
-			return <AboutExperience key={uuidv4()} />
-		} else if (el.name === 'core/image') {
-			const imageCaption = extractFigcaptionFromHtmlContent(el.htmlContent)
-			return (
-				<div className={styles.portraitWrapper} key={uuidv4()}>
-					<Image
-						src={el.attributes.url}
-						alt={extractAltFromHtmlContent(el.htmlContent)}
-						width={el.attributes.width}
-						height={el.attributes.height}
-						quality={70}
-						style={{ display: 'block' }}
-						className={styles.portrait}
-					/>
-					{imageCaption ? (
-						<small className={styles.portraitCaption}>{imageCaption}</small>
-					) : null}
-				</div>
-			)
-		}
-	})
+	// const contentToDisplay = data.data.map((el, index) => {
+	// 	if (el.name === 'core/paragraph' && index !== 1) {
+	// 		return handleParagraphToRender(el.attributes.content)
+	// 	} else if (el.name === 'core/paragraph' && index === 1) {
+	// 		return <AboutExperience key={uuidv4()} />
+	// 	} else if (el.name === 'core/image') {
+	// 		const imageCaption = extractFigcaptionFromHtmlContent(el.htmlContent)
+	// 		return (
+	// 			<div className={styles.portraitWrapper} key={uuidv4()}>
+	// 				<Image
+	// 					src={el.attributes.url}
+	// 					alt={extractAltFromHtmlContent(el.htmlContent)}
+	// 					width={el.attributes.width}
+	// 					height={el.attributes.height}
+	// 					quality={70}
+	// 					style={{ display: 'block' }}
+	// 					className={styles.portrait}
+	// 				/>
+	// 				{imageCaption ? (
+	// 					<small className={styles.portraitCaption}>{imageCaption}</small>
+	// 				) : null}
+	// 			</div>
+	// 		)
+	// 	}
+	// })
 
 	return (
 		<>
 			<main className={styles.main}>
-				<h1>{data.title}</h1>
-				{contentToDisplay}
+				{/* <h1>{data.title}</h1>
+				{contentToDisplay} */}
 			</main>
 			<PageCloseMenu />
 			<Thumbnails />
