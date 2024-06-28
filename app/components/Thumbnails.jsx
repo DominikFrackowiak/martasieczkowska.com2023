@@ -27,7 +27,7 @@ export default async function Thumbnails({ category, isFullImageDisplayed }) {
 						<SingleThumbnail
 							key={thumbnail?.thumbnail?.id}
 							thumbnail={thumbnail?.thumbnail?.link}
-							description={thumbnail?.thumbnailDescription}
+							description={thumbnail?.thumbnaildescription}
 							slug={thumbnail?.slug}
 							category={category}
 						/>

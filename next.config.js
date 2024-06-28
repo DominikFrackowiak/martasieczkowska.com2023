@@ -8,7 +8,7 @@ const nextConfig = {
 			},
 			{
 				protocol: 'http',
-				hostname: 'backend.martasieczkowska.com',
+				hostname: 'backendmartas.rastasenmadrid.atthost24.pl',
 			},
 		],
 	},
