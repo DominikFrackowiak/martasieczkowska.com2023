@@ -9,7 +9,6 @@ export default function SingleThumbnail({
 	category,
 	slug,
 }) {
-	console.log(description)
 	return (
 		<Link
 			href={category ? `/works/${slug}?category=${category}` : `/works/${slug}`}

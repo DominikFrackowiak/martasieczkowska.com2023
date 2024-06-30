@@ -49,6 +49,8 @@ export default async function SinglePage({ params, searchParams }) {
 
 	allSlugs = data.map(el => el.slug)
 
+	console.log(allSlugs, searchParams.category)
+
 	const currentSlugIndex = allSlugs.reverse().indexOf(params.slug)
 
 	const contentToDisplay = (
