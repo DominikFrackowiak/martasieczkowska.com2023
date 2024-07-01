@@ -58,13 +58,13 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 	return (
 		<>
 			{clickedImageIndex === -1 && (
-				<div className={styles.galleryWrapper}>
-					<div
+				<article className={styles.galleryWrapper}>
+					<section
 						className={`${styles.galleryHeader} ${styles.galleryHeaderUpToLarge}`}
 					>
 						<h1>{headingInnerText}</h1>
 						<p>{postInnerText}</p>
-					</div>
+					</section>
 					<div className={styles.allImagesWrapper}>
 						{images?.map((img, index) => (
 							<section
@@ -97,7 +97,7 @@ export default function Gallery({ images, headingInnerText, postInnerText }) {
 
 						<ArrowUp smallerDevices={true} />
 					</div>
-				</div>
+				</article>
 			)}
 
 			{clickedImageIndex >= 0 && (

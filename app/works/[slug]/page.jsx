@@ -21,7 +21,11 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
 	const metadata = await getMetadata(params.slug)
-	return metadata
+	if (metadata) {
+		return metadata
+	} else {
+		redirect('/')
+	}
 }
 
 export const revalidate = 3600
@@ -49,7 +53,7 @@ export default async function SinglePage({ params, searchParams }) {
 
 	allSlugs = data.map(el => el.slug)
 
-	console.log(allSlugs, searchParams.category)
+	// console.log(allSlugs, searchParams.category)
 
 	const currentSlugIndex = allSlugs.reverse().indexOf(params.slug)
 
