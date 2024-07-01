@@ -7,6 +7,7 @@ import styles from './Gallery.module.scss'
 import { ImagesCarousel } from '../components/ImagesCarousel'
 import ArrowUp from './ArrowUp'
 
+
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 
 export default function Gallery({ images, headingInnerText, postInnerText }) {
