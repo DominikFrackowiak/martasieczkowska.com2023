@@ -8,7 +8,6 @@ import styles from './Thumbnails.module.scss'
 export const revalidate = 3600
 
 export default async function Thumbnails({ category, isFullImageDisplayed }) {
-	
 	let data
 
 	if (category === undefined) {
@@ -18,6 +17,8 @@ export default async function Thumbnails({ category, isFullImageDisplayed }) {
 	}
 
 	data = data?.reverse()
+
+// data.forEach(el => console.log(el.thumbnail.link))
 
 	const contentToDisplay = !isFullImageDisplayed ? (
 		<div className={styles.thumbnails}>
@@ -37,6 +38,4 @@ export default async function Thumbnails({ category, isFullImageDisplayed }) {
 	) : null
 
 	return contentToDisplay
-		
-	
 }

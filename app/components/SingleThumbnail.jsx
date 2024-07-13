@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import Image from 'next/image'
+
 import styles from './Thumbnails.module.scss'
 
 export default function SingleThumbnail({
@@ -9,6 +10,7 @@ export default function SingleThumbnail({
 	category,
 	slug,
 }) {
+	
 	return (
 		<Link
 			href={category ? `/works/${slug}?category=${category}` : `/works/${slug}`}
