@@ -8,7 +8,7 @@ const nextConfig = {
 			},
 			{
 				protocol: 'http',
-				hostname: 'backendmartas.rastasenmadrid.atthost24.pl',
+				hostname: 'hpvpzir.cluster027.hosting.ovh.net',
 			},
 		],
 	},
