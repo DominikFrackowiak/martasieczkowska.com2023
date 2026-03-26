@@ -8,7 +8,11 @@ const nextConfig = {
 			},
 			{
 				protocol: 'http',
-				hostname: 'hpvpzir.cluster027.hosting.ovh.net',
+				hostname: 'martasieczkowska.kraftweb.eu',
+			},
+			{
+				protocol: 'https',
+				hostname: 'martasieczkowska.kraftweb.eu',
 			},
 		],
 	},
